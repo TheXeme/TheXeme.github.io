@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>TheXeme&#39;s Blog</title>
+  <title>Xeme&#39;s Blog</title>
   
-  
+  <subtitle>吴泽鑫的博客</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://thexeme.github.io/"/>
   <updated>2020-01-14T04:27:15.061Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://thexeme.github.io/</id>
   
   <author>
     <name>TheXeme</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2020/01/14/hello-world/"/>
-    <id>http://yoursite.com/2020/01/14/hello-world/</id>
+    <link href="https://thexeme.github.io/2020/01/14/hello-world/"/>
+    <id>https://thexeme.github.io/2020/01/14/hello-world/</id>
     <published>2020-01-14T04:27:15.061Z</published>
     <updated>2020-01-14T04:27:15.061Z</updated>
     
