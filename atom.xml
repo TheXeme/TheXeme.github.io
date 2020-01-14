@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://thexeme.github.io/"/>
-  <updated>2020-01-14T11:21:59.416Z</updated>
+  <updated>2020-01-14T11:35:06.370Z</updated>
   <id>https://thexeme.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://thexeme.github.io/2020/01/01/FirstBlog/"/>
     <id>https://thexeme.github.io/2020/01/01/FirstBlog/</id>
     <published>2019-12-31T16:00:00.000Z</published>
-    <updated>2020-01-14T11:21:59.416Z</updated>
+    <updated>2020-01-14T11:35:06.370Z</updated>
     
     <summary type="html">
     
@@ -37,6 +37,10 @@
     </summary>
     
     
+      <category term="生活" scheme="https://thexeme.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="生活" scheme="https://thexeme.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
