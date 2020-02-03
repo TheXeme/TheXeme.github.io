@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://thexeme.github.io/"/>
-  <updated>2020-02-03T11:27:38.033Z</updated>
+  <updated>2020-02-03T14:29:36.997Z</updated>
   <id>https://thexeme.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>运动相机下的运动目标跟踪—_day1</title>
+    <link href="https://thexeme.github.io/2020/02/03/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA_day1/"/>
+    <id>https://thexeme.github.io/2020/02/03/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA_day1/</id>
+    <published>2020-02-03T12:39:02.000Z</published>
+    <updated>2020-02-03T14:29:36.997Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Moving-Objects-Detection-and-Tracking-with-a-Moving-Camera&quot;&gt;&lt;a href=&quot;#Moving-Objects-Detection-and-Tracking-with-a-Moving-Camera&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://thexeme.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="机器视觉" scheme="https://thexeme.github.io/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+    
+  </entry>
   
   <entry>
     <title>My First Blog in here</title>
