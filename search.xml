@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>运动相机下的运动目标跟踪—_day1</title>
-    <url>/2020/02/03/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA_day1/</url>
+    <title>运动相机下的运动目标跟踪2</title>
+    <url>/2020/02/04/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/</url>
+    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h1 id="Moving-Objects-Detection-and-Tracking-with-a-Moving-Camera"><a href="#Moving-Objects-Detection-and-Tracking-with-a-Moving-Camera" class="headerlink" title="Moving Objects Detection and Tracking with a Moving Camera"></a>Moving Objects Detection and Tracking with a Moving Camera</h1><p>以下为阅读《Moving Objects Detection with a Moving Camera: A Comprehensive Review》随读笔记</p>
+<h3 id="Motion-segmentation-运动分割法"><a href="#Motion-segmentation-运动分割法" class="headerlink" title="Motion segmentation 运动分割法"></a>Motion segmentation 运动分割法</h3><p>运动分割法的大体思路为利用特征点的轨迹来分割每一帧，分成静态背景与移动物体。</p>
+<img src="/2020/02/04/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/运动分割法example.png" style="zoom:125%;">
+
+<p>《Background subtraction for moving cameras based on trajectory-controlled segmentation and label inference》(oct 2015)提出：根据特征点的轨迹相似度，并利用PCA算法(主成分分析算法)筛除false trajectories，从而获取几类集群特征点。</p>
+<a id="more"></a>
+
+<p>《a probabilistic model for causal motion segmentation in moving camera videos》(2016)使用了稠密光流差、旋转流差，从而获得了物体的移动流。然后由平移流(translational flow)估计角度场，并根据每个平移流的平移大小作为该平移角度的可靠性指标，然后由符合条件的流动角度的可能性评估每个像素的流动方向。最后，用贝叶斯公式(Bayes’ rule)获得每个像素的次可能移动，然后会被用于最后的分割当中。作者还提出了，利用一个修正的RANSAC算法选择3个超像素，然后用于去分割视频的第一帧，从而用于后续的估计背景的移动。</p>
+<p>《Moving object segmentation using depth and optical flow in car driving sequences》(2016)</p>
+<h2 id="论文来源"><a href="#论文来源" class="headerlink" title="论文来源"></a>论文来源</h2><p>论文来源：《Moving Objects Detection with a Moving Camera: A Comprehensive Review》<br>Marie-Neige Chapela, Thierry Bouwmansb<br>aLab. L3I, LRUniv., Avenue Albert Einstein, 17000 La Rochelle, France<br>bLab. MIA, LRUniv., Avenue Albert Einstein, 17000 La Rochelle, France<br>[cs.CV] 15 Jan 2020</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>机器视觉</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>运动相机下的运动目标跟踪1</title>
+    <url>/2020/02/03/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA1/</url>
     <content><![CDATA[<h1 id="Moving-Objects-Detection-and-Tracking-with-a-Moving-Camera"><a href="#Moving-Objects-Detection-and-Tracking-with-a-Moving-Camera" class="headerlink" title="Moving Objects Detection and Tracking with a Moving Camera"></a>Moving Objects Detection and Tracking with a Moving Camera</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在本块内容中，将针对移动相机的移动目标检测跟踪进行研究与实现。</p>
 <h2 id="方法概述"><a href="#方法概述" class="headerlink" title="方法概述"></a>方法概述</h2><p>由学者Marie-Neige Chapela, Thierry Bouwmansb发表，在 15 Jan 2020 被收录的论文《Moving Objects Detection with a Moving Camera: A Comprehensive Review》中，将运动相机的运动目标检测方法大致分为两类：一类称为one Plane类，将背景视为flat scenes来处理；第二类将背景作为several parts来处理。</p>
 <h3 id="one-Plane作为单平面处理类"><a href="#one-Plane作为单平面处理类" class="headerlink" title="one Plane作为单平面处理类"></a>one Plane作为单平面处理类</h3><h4 id="Panoramic-background-subtraction-全背景减法"><a href="#Panoramic-background-subtraction-全背景减法" class="headerlink" title="Panoramic background subtraction 全背景减法"></a>Panoramic background subtraction 全背景减法</h4><p>一个移动的照相机捕捉到的图像可以被缝在一起形成一个较大的图像，即所谓的全景图或镶嵌图，从而可以再次作为一个静态相机处理。</p>
