@@ -51,8 +51,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/02/04/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/" class="article-date">
-  <time datetime="2020-02-04T08:40:02.000Z" itemprop="datePublished">2020-02-04</time>
+      <a href="/2020/02/05/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/" class="article-date">
+  <time datetime="2020-02-05T08:40:02.000Z" itemprop="datePublished">2020-02-05</time>
 </a>
       
   <div class="article-category">
@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">383字</span>
+            <span class="post-count">641字</span>
         </span>
     </span>
 
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">2分钟</span>
         </span>
     </span>
 </div>
@@ -101,15 +101,19 @@
       
 
       
-      <h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h1 id="Moving-Objects-Detection-and-Tracking-with-a-Moving-Camera"><a href="#Moving-Objects-Detection-and-Tracking-with-a-Moving-Camera" class="headerlink" title="Moving Objects Detection and Tracking with a Moving Camera"></a>Moving Objects Detection and Tracking with a Moving Camera</h1><p>以下为阅读《Moving Objects Detection with a Moving Camera: A Comprehensive Review》随读笔记</p>
+      <p>以下为阅读《Moving Objects Detection with a Moving Camera: A Comprehensive Review》随读笔记</p>
 <h3 id="Motion-segmentation-运动分割法"><a href="#Motion-segmentation-运动分割法" class="headerlink" title="Motion segmentation 运动分割法"></a>Motion segmentation 运动分割法</h3><p>运动分割法的大体思路为利用特征点的轨迹来分割每一帧，分成静态背景与移动物体。</p>
-<img src="/2020/02/04/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/运动分割法example.png" style="zoom:125%;">
+<img src="/2020/02/05/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/运动分割法example.png" style="zoom:125%;">
 
 <p>《Background subtraction for moving cameras based on trajectory-controlled segmentation and label inference》(oct 2015)提出：根据特征点的轨迹相似度，并利用PCA算法(主成分分析算法)筛除false trajectories，从而获取几类集群特征点。</p>
+<p>《a probabilistic model for causal motion segmentation in moving camera videos》(2016)使用了稠密光流差、旋转流差，从而获得了物体的移动流。然后由平移流(translational flow)估计角度场，并根据每个平移流的平移大小作为该平移角度的可靠性指标，然后由符合条件的流动角度的可能性评估每个像素的流动方向。最后，用贝叶斯公式(Bayes’ rule)获得每个像素的次可能移动，然后会被用于最后的分割当中。作者还提出了，利用一个修正的RANSAC算法选择3个超像素，然后用于去分割视频的第一帧，从而用于后续的估计背景的移动以抵消相机的晃动。</p>
 <a id="more"></a>
 
-<p>《a probabilistic model for causal motion segmentation in moving camera videos》(2016)使用了稠密光流差、旋转流差，从而获得了物体的移动流。然后由平移流(translational flow)估计角度场，并根据每个平移流的平移大小作为该平移角度的可靠性指标，然后由符合条件的流动角度的可能性评估每个像素的流动方向。最后，用贝叶斯公式(Bayes’ rule)获得每个像素的次可能移动，然后会被用于最后的分割当中。作者还提出了，利用一个修正的RANSAC算法选择3个超像素，然后用于去分割视频的第一帧，从而用于后续的估计背景的移动。</p>
-<p>《Moving object segmentation using depth and optical flow in car driving sequences》(2016)</p>
+<p>《Moving object segmentation using depth and optical flow in car driving sequences》(2016)通过使用动作消失点从2D视角动作中获取3D动作，并得出背景的深度。</p>
+<p>《A multilayer-based framework for online back-ground subtraction with freely moving cameras》提出了第一集群轨迹，它动态地基于集群对各个轨迹的标签的异同。通过计算集群内的变化点，各个集群可以分别对应各个前景物体。</p>
+<p>《Online background subtraction with freely moving cameras using different motion boundaries》的作者提出基于光度和光流方向场，利用Canny detector来计算动作的边界，从而获取初始 seeds 。其中，前景seeds是动作边缘上的点，而背景seeds是前景的动作检测方框上的点。</p>
+<p>《An efficient optical flow based motion detection method for non-stationary scenes》基于FlowNet2.0得到稠密光流图。背景的光流是由Constrained RANSAC Algorithm(CRA)的二次变换函数计算出的。CRA是一种改进版本的RANSAC算法，它避免了过拟合并且改进了搜索效率。</p>
+<p>《Flownet2.0: Evolution of optical flow estimation with deep networks》：FlowNet2.0是一种基于深度学习的光流预估算法。</p>
 <h2 id="论文来源"><a href="#论文来源" class="headerlink" title="论文来源"></a>论文来源</h2><p>论文来源：《Moving Objects Detection with a Moving Camera: A Comprehensive Review》<br>Marie-Neige Chapela, Thierry Bouwmansb<br>aLab. L3I, LRUniv., Avenue Albert Einstein, 17000 La Rochelle, France<br>bLab. MIA, LRUniv., Avenue Albert Einstein, 17000 La Rochelle, France<br>[cs.CV] 15 Jan 2020</p>
 
       
@@ -117,7 +121,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://thexeme.github.io/2020/02/04/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/" data-id="ck6940thf0006pwtxc9f2bw84"
+      <a data-url="https://thexeme.github.io/2020/02/05/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/" data-id="ck6940thf0006pwtxc9f2bw84"
         class="article-share-link">分享</a>
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/" rel="tag">机器视觉</a></li></ul>
