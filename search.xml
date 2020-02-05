@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>运动相机下的运动目标跟踪2</title>
-    <url>/2020/02/04/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/</url>
+    <url>/thexeme/2020/02/04/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/</url>
     <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h1 id="Moving-Objects-Detection-and-Tracking-with-a-Moving-Camera"><a href="#Moving-Objects-Detection-and-Tracking-with-a-Moving-Camera" class="headerlink" title="Moving Objects Detection and Tracking with a Moving Camera"></a>Moving Objects Detection and Tracking with a Moving Camera</h1><p>以下为阅读《Moving Objects Detection with a Moving Camera: A Comprehensive Review》随读笔记</p>
 <h3 id="Motion-segmentation-运动分割法"><a href="#Motion-segmentation-运动分割法" class="headerlink" title="Motion segmentation 运动分割法"></a>Motion segmentation 运动分割法</h3><p>运动分割法的大体思路为利用特征点的轨迹来分割每一帧，分成静态背景与移动物体。</p>
 <img src="/2020/02/04/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/运动分割法example.png" style="zoom:125%;">
@@ -23,7 +23,7 @@
   </entry>
   <entry>
     <title>运动相机下的运动目标跟踪1</title>
-    <url>/2020/02/03/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA1/</url>
+    <url>/thexeme/2020/02/03/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA1/</url>
     <content><![CDATA[<h1 id="Moving-Objects-Detection-and-Tracking-with-a-Moving-Camera"><a href="#Moving-Objects-Detection-and-Tracking-with-a-Moving-Camera" class="headerlink" title="Moving Objects Detection and Tracking with a Moving Camera"></a>Moving Objects Detection and Tracking with a Moving Camera</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在本块内容中，将针对移动相机的移动目标检测跟踪进行研究与实现。</p>
 <h2 id="方法概述"><a href="#方法概述" class="headerlink" title="方法概述"></a>方法概述</h2><p>由学者Marie-Neige Chapela, Thierry Bouwmansb发表，在 15 Jan 2020 被收录的论文《Moving Objects Detection with a Moving Camera: A Comprehensive Review》中，将运动相机的运动目标检测方法大致分为两类：一类称为one Plane类，将背景视为flat scenes来处理；第二类将背景作为several parts来处理。</p>
 <h3 id="one-Plane作为单平面处理类"><a href="#one-Plane作为单平面处理类" class="headerlink" title="one Plane作为单平面处理类"></a>one Plane作为单平面处理类</h3><h4 id="Panoramic-background-subtraction-全背景减法"><a href="#Panoramic-background-subtraction-全背景减法" class="headerlink" title="Panoramic background subtraction 全背景减法"></a>Panoramic background subtraction 全背景减法</h4><p>一个移动的照相机捕捉到的图像可以被缝在一起形成一个较大的图像，即所谓的全景图或镶嵌图，从而可以再次作为一个静态相机处理。</p>
@@ -44,7 +44,7 @@
   </entry>
   <entry>
     <title>My First Blog in here</title>
-    <url>/2020/01/01/FirstBlog/</url>
+    <url>/thexeme/2020/01/01/FirstBlog/</url>
     <content><![CDATA[<p>欢迎来到吴泽鑫的博客！</p>
 <h2 id="About-me"><a href="#About-me" class="headerlink" title="About me"></a>About me</h2><h3 id="代码仓库"><a href="#代码仓库" class="headerlink" title="代码仓库"></a>代码仓库</h3><h4 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h4><p> <a href="https://github.com/TheXeme" target="_blank" rel="noopener">https://github.com/TheXeme</a></p>
 <h3 id="博客"><a href="#博客" class="headerlink" title="博客"></a>博客</h3><h4 id="GithubBlog"><a href="#GithubBlog" class="headerlink" title="GithubBlog"></a>GithubBlog</h4><p> <a href="https://thexeme.github.io/">https://thexeme.github.io/</a></p>
