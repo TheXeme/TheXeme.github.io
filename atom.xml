@@ -3,11 +3,11 @@
   <title>Xeme&#39;s Blog</title>
   
   <subtitle>吴泽鑫的博客</subtitle>
-  <link href="/THEXEME/atom.xml" rel="self"/>
+  <link href="/atom.xml" rel="self"/>
   
-  <link href="https://thexeme.gitee.io/thexeme/"/>
+  <link href="https://thexeme.github.io/"/>
   <updated>2020-02-05T07:42:16.796Z</updated>
-  <id>https://thexeme.gitee.io/thexeme/</id>
+  <id>https://thexeme.github.io/</id>
   
   <author>
     <name>TheXeme</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>运动相机下的运动目标跟踪2</title>
-    <link href="https://thexeme.gitee.io/thexeme/2020/02/04/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/"/>
-    <id>https://thexeme.gitee.io/thexeme/2020/02/04/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/</id>
+    <link href="https://thexeme.github.io/2020/02/04/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/"/>
+    <id>https://thexeme.github.io/2020/02/04/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/</id>
     <published>2020-02-04T08:40:02.000Z</published>
     <updated>2020-02-05T07:42:16.796Z</updated>
     
@@ -34,17 +34,17 @@
     </summary>
     
     
-      <category term="技术" scheme="https://thexeme.gitee.io/thexeme/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://thexeme.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="机器视觉" scheme="https://thexeme.gitee.io/thexeme/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="https://thexeme.github.io/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
   </entry>
   
   <entry>
     <title>运动相机下的运动目标跟踪1</title>
-    <link href="https://thexeme.gitee.io/thexeme/2020/02/03/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA1/"/>
-    <id>https://thexeme.gitee.io/thexeme/2020/02/03/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA1/</id>
+    <link href="https://thexeme.github.io/2020/02/03/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA1/"/>
+    <id>https://thexeme.github.io/2020/02/03/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA1/</id>
     <published>2020-02-03T12:39:02.000Z</published>
     <updated>2020-02-05T02:56:17.963Z</updated>
     
@@ -61,17 +61,17 @@
     </summary>
     
     
-      <category term="技术" scheme="https://thexeme.gitee.io/thexeme/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://thexeme.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="机器视觉" scheme="https://thexeme.gitee.io/thexeme/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+      <category term="机器视觉" scheme="https://thexeme.github.io/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
   </entry>
   
   <entry>
     <title>My First Blog in here</title>
-    <link href="https://thexeme.gitee.io/thexeme/2020/01/01/FirstBlog/"/>
-    <id>https://thexeme.gitee.io/thexeme/2020/01/01/FirstBlog/</id>
+    <link href="https://thexeme.github.io/2020/01/01/FirstBlog/"/>
+    <id>https://thexeme.github.io/2020/01/01/FirstBlog/</id>
     <published>2019-12-31T16:00:00.000Z</published>
     <updated>2020-02-03T11:27:38.033Z</updated>
     
@@ -89,10 +89,10 @@
     </summary>
     
     
-      <category term="生活" scheme="https://thexeme.gitee.io/thexeme/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="https://thexeme.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="生活" scheme="https://thexeme.gitee.io/thexeme/tags/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="https://thexeme.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
