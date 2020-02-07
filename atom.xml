@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://thexeme.github.io/"/>
-  <updated>2020-02-05T12:56:37.672Z</updated>
+  <updated>2020-02-07T07:06:45.316Z</updated>
   <id>https://thexeme.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>运动相机下的运动目标跟踪3</title>
+    <link href="https://thexeme.github.io/2020/02/07/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA3/"/>
+    <id>https://thexeme.github.io/2020/02/07/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA3/</id>
+    <published>2020-02-07T07:46:21.000Z</published>
+    <updated>2020-02-07T07:06:45.316Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;继上篇，以下为2月7日研究《Moving Objects Detection with a Moving Camera: A Comprehensive Review》的运动分割法部分的笔记&lt;/p&gt;
+&lt;h3 id=&quot;Motion-segmentation-运动分割法2&quot;&gt;&lt;a href=&quot;#Motion-segmentation-运动分割法2&quot; class=&quot;headerlink&quot; title=&quot;Motion segmentation 运动分割法2&quot;&gt;&lt;/a&gt;Motion segmentation 运动分割法2&lt;/h3&gt;&lt;p&gt;《Background subtraction for moving cameras based on trajectory-controlled segmentation and label inference》(2015)提出了一个基于轨迹的分水岭分割算法。在应用一个双边的滤波器去柔化图像并增强edges后，无关梯度会被最小化，并且将轨迹点选为标签。这些标签将会用于watershed algorithm (分水岭算法,根据分水岭的构成来考虑图像的分割) 的seeds从而获得分割结果。在这个结果中，会根据轨迹的标签，将分割结果的相应标为前景与背景。最后，利用马尔可夫随机场算法(Markov Random Field，MRF)，让其中的能量函数最小化，使得用前景背景信息推断没有标签的部分的标签。&lt;/p&gt;
+&lt;img src=&quot;/2020/02/07/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA3/P1_2015.png&quot; style=&quot;zoom:75%;&quot;&gt;
+
+&lt;p&gt;上图中，红色点代表为检测出的背景部分，蓝色点代表检测出的前景部分；其中有一些由于噪点而误检测的特征点可以使用PCA算法筛除&lt;/p&gt;
+&lt;p&gt;《A multilayer-based framework for online back-ground subtraction with freely moving cameras》(2017)提出了Multi-Layer Background Subtraction(多层的背景差法)。他们使用了多标签的分割，而非二值标签的分割。每一个动作集群点都会被联系到一层中。在每一层中，像素的动作都会由Gaussian Belief Propagation (GaBP)(高斯置信度传播算法)评估。之后，由外观模型、先前的概率图、motion estimation(动作评估)去计算之后的概率图。多标签的分割是正是基于由MRF算法中最小化能量函数得出的概率图计算的。&lt;/p&gt;
+&lt;img src=&quot;/2020/02/07/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA3/P2_2017.png&quot; style=&quot;zoom:75%;&quot;&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://thexeme.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="机器视觉" scheme="https://thexeme.github.io/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+    
+  </entry>
+  
+  <entry>
     <title>运动相机下的运动目标跟踪2</title>
     <link href="https://thexeme.github.io/2020/02/05/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/"/>
     <id>https://thexeme.github.io/2020/02/05/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/</id>
     <published>2020-02-05T08:40:02.000Z</published>
-    <updated>2020-02-05T12:56:37.672Z</updated>
+    <updated>2020-02-05T14:16:42.276Z</updated>
     
     <summary type="html">
     
