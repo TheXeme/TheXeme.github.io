@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>相机运动方向检测1</title>
+    <url>/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/</url>
+    <content><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>代码实现相机运动方向的检测，用于后面的相机运动补偿。<br>目前还未完成，本篇仅为今日的小结</p>
+<h2 id="算法大致思路"><a href="#算法大致思路" class="headerlink" title="算法大致思路"></a>算法大致思路</h2><p>该算法思路仅为当前思路，后续还会继续改进</p>
+<p>对于每一帧：<br>1、提取其Surf特征点<br>2、与上一帧的特征点进行匹配，这里可以使用FlannBased与BruteForceMatcher，FlannBased更快而BruteForceMatcher更精确；考虑到视频处理的实时性，本人目前使用FlannBased<br>3、基于距离筛除一些不太可能的匹配，此步骤的前提是场景不会发生形变<br>4、根据已经匹配的角点及其移动距离与方向，从而获取当前相机在此参考系下的移动情况</p>
+<h3 id="主要使用到数据结构与对象"><a href="#主要使用到数据结构与对象" class="headerlink" title="主要使用到数据结构与对象"></a>主要使用到数据结构与对象</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">cv::Ptr&lt;SurfFeatureDetector&gt; detector;<span class="comment">//检测器</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::KeyPoint&gt; key_points_1, key_points_2;<span class="comment">//提取的特征点序列</span></span><br><span class="line">cv::Mat descriptors1, descriptors2;<span class="comment">//特征描述子</span></span><br><span class="line">cv::Ptr&lt;cv::DescriptorMatcher&gt; matcher = </span><br><span class="line">    cv::DescriptorMatcher::create(<span class="string">"FlannBased"</span>);<span class="comment">//FlannBased匹配</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::DMatch&gt; dmatches;<span class="comment">//匹配序列</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="目前进度"><a href="#目前进度" class="headerlink" title="目前进度"></a>目前进度</h3><img src="/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/match1.png" style="zoom:125%;">
+
+<img src="/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/result.gif" style="zoom:125%;">]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>机器视觉</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>运动相机下的运动目标跟踪3</title>
     <url>/2020/02/07/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA3/</url>
     <content><![CDATA[<p>继上篇，以下为2月7日研究《Moving Objects Detection with a Moving Camera: A Comprehensive Review》的运动分割法部分的笔记</p>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://thexeme.github.io/"/>
-  <updated>2020-02-07T07:06:45.316Z</updated>
+  <updated>2020-02-08T13:04:41.366Z</updated>
   <id>https://thexeme.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>相机运动方向检测1</title>
+    <link href="https://thexeme.github.io/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/"/>
+    <id>https://thexeme.github.io/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/</id>
+    <published>2020-02-08T11:03:07.000Z</published>
+    <updated>2020-02-08T13:04:41.366Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;目标&quot;&gt;&lt;a href=&quot;#目标&quot; class=&quot;headerlink&quot; title=&quot;目标&quot;&gt;&lt;/a&gt;目标&lt;/h2&gt;&lt;p&gt;代码实现相机运动方向的检测，用于后面的相机运动补偿。&lt;br&gt;目前还未完成，本篇仅为今日的小结&lt;/p&gt;
+&lt;h2 id=&quot;算法大致思路&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://thexeme.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="机器视觉" scheme="https://thexeme.github.io/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+    
+  </entry>
   
   <entry>
     <title>运动相机下的运动目标跟踪3</title>
