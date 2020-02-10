@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://thexeme.github.io/"/>
-  <updated>2020-02-08T13:04:41.366Z</updated>
+  <updated>2020-02-10T12:30:21.271Z</updated>
   <id>https://thexeme.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>相机运动方向检测1</title>
-    <link href="https://thexeme.github.io/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/"/>
-    <id>https://thexeme.github.io/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/</id>
-    <published>2020-02-08T11:03:07.000Z</published>
-    <updated>2020-02-08T13:04:41.366Z</updated>
+    <title>线性模型1</title>
+    <link href="https://thexeme.github.io/2020/02/10/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B1/"/>
+    <id>https://thexeme.github.io/2020/02/10/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B1/</id>
+    <published>2020-02-10T08:55:02.000Z</published>
+    <updated>2020-02-10T12:30:21.271Z</updated>
     
     <summary type="html">
     
@@ -29,10 +29,35 @@
       
         
         
-          &lt;h2 id=&quot;目标&quot;&gt;&lt;a href=&quot;#目标&quot; class=&quot;headerlink&quot; title=&quot;目标&quot;&gt;&lt;/a&gt;目标&lt;/h2&gt;&lt;p&gt;代码实现相机运动方向的检测，用于后面的相机运动补偿。&lt;br&gt;目前还未完成，本篇仅为今日的小结&lt;/p&gt;
-&lt;h2 id=&quot;算法大致思路&quot;&gt;&lt;a
+          &lt;h2 id=&quot;线性模型的基本形式&quot;&gt;&lt;a href=&quot;#线性模型的基本形式&quot; class=&quot;headerlink&quot; title=&quot;线性模型的基本形式&quot;&gt;&lt;/a&gt;线性模型的基本形式&lt;/h2&gt;&lt;img
         
       
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://thexeme.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="机器学习" scheme="https://thexeme.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>相机运动方向检测1</title>
+    <link href="https://thexeme.github.io/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/"/>
+    <id>https://thexeme.github.io/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/</id>
+    <published>2020-02-08T11:03:07.000Z</published>
+    <updated>2020-02-08T14:10:30.968Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;目标&quot;&gt;&lt;a href=&quot;#目标&quot; class=&quot;headerlink&quot; title=&quot;目标&quot;&gt;&lt;/a&gt;目标&lt;/h2&gt;&lt;p&gt;代码实现相机运动方向的检测，用于后面的相机运动补偿。&lt;br&gt;目前还未完成，本篇仅为今日的小结&lt;/p&gt;
+&lt;h2 id=&quot;算法大致思路&quot;&gt;&lt;a href=&quot;#算法大致思路&quot; class=&quot;headerlink&quot; title=&quot;算法大致思路&quot;&gt;&lt;/a&gt;算法大致思路&lt;/h2&gt;&lt;p&gt;该算法思路仅为当前思路，后续还会继续改进&lt;/p&gt;
+&lt;p&gt;对于每一帧：&lt;br&gt;1、提取其Surf特征点&lt;br&gt;2、与上一帧的特征点进行匹配，这里可以使用FlannBased与BruteForceMatcher，FlannBased更快而BruteForceMatcher更精确；考虑到视频处理的实时性，本人目前使用FlannBased&lt;br&gt;3、基于距离筛除一些不太可能的匹配，此步骤的前提是场景不会发生形变&lt;br&gt;4、根据已经匹配的角点及其移动距离与方向，从而获取当前相机在此参考系下的移动情况&lt;/p&gt;
+&lt;h3 id=&quot;主要使用到数据结构与对象&quot;&gt;&lt;a href=&quot;#主要使用到数据结构与对象&quot; class=&quot;headerlink&quot; title=&quot;主要使用到数据结构与对象&quot;&gt;&lt;/a&gt;主要使用到数据结构与对象&lt;/h3&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cv::Ptr&amp;lt;SurfFeatureDetector&amp;gt; detector;&lt;span class=&quot;comment&quot;&gt;//检测器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::&lt;span class=&quot;built_in&quot;&gt;vector&lt;/span&gt;&amp;lt;cv::KeyPoint&amp;gt; key_points_1, key_points_2;&lt;span class=&quot;comment&quot;&gt;//提取的特征点序列&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cv::Mat descriptors1, descriptors2;&lt;span class=&quot;comment&quot;&gt;//特征描述子&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cv::Ptr&amp;lt;cv::DescriptorMatcher&amp;gt; matcher = &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    cv::DescriptorMatcher::create(&lt;span class=&quot;string&quot;&gt;&quot;FlannBased&quot;&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//FlannBased匹配&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::&lt;span class=&quot;built_in&quot;&gt;vector&lt;/span&gt;&amp;lt;cv::DMatch&amp;gt; dmatches;&lt;span class=&quot;comment&quot;&gt;//匹配序列&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;目前进度&quot;&gt;&lt;a href=&quot;#目前进度&quot; class=&quot;headerlink&quot; title=&quot;目前进度&quot;&gt;&lt;/a&gt;目前进度&lt;/h3&gt;&lt;img src=&quot;/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/match1.png&quot; style=&quot;zoom:125%;&quot;&gt;
     
     </summary>
     
