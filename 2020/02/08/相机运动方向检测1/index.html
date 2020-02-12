@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">266字</span>
+            <span class="post-count">297字</span>
         </span>
     </span>
 
@@ -103,14 +103,21 @@
       
       <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>代码实现相机运动方向的检测，用于后面的相机运动补偿。<br>目前还未完成，本篇仅为今日的小结</p>
 <h2 id="算法大致思路"><a href="#算法大致思路" class="headerlink" title="算法大致思路"></a>算法大致思路</h2><p>该算法思路仅为当前思路，后续还会继续改进</p>
-<p>对于每一帧：<br>1、提取其Surf特征点<br>2、与上一帧的特征点进行匹配，这里可以使用FlannBased与BruteForceMatcher，FlannBased更快而BruteForceMatcher更精确；考虑到视频处理的实时性，本人目前使用FlannBased<br>3、基于距离筛除一些不太可能的匹配，此步骤的前提是场景不会发生形变<br>4、根据已经匹配的角点及其移动距离与方向，从而获取当前相机在此参考系下的移动情况</p>
+<p>对于每一帧：<br>1、提取其Surf特征点<br>2、与上一帧的特征点进行匹配，这里可以使用FlannBased与BruteForceMatcher，FlannBased更快而BruteForceMatcher更精确；考虑到视频处理的实时性，本人目前使用FlannBased<br>3、基于距离筛除一些不太可能的匹配，此步骤的前提是场景不会发生形变<br>4、根据已经匹配的特征点及其移动距离与方向，从而获取当前相机在此参考系下的移动情况</p>
 <h3 id="主要使用到数据结构与对象"><a href="#主要使用到数据结构与对象" class="headerlink" title="主要使用到数据结构与对象"></a>主要使用到数据结构与对象</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cv::Ptr&lt;SurfFeatureDetector&gt; detector;<span class="comment">//检测器</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::KeyPoint&gt; key_points_1, key_points_2;<span class="comment">//提取的特征点序列</span></span><br><span class="line">cv::Mat descriptors1, descriptors2;<span class="comment">//特征描述子</span></span><br><span class="line">cv::Ptr&lt;cv::DescriptorMatcher&gt; matcher = </span><br><span class="line">    cv::DescriptorMatcher::create(<span class="string">"FlannBased"</span>);<span class="comment">//FlannBased匹配</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::DMatch&gt; dmatches;<span class="comment">//匹配序列</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="目前进度"><a href="#目前进度" class="headerlink" title="目前进度"></a>目前进度</h3><img src="/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/match1.png" style="zoom:125%;">
 
 <a id="more"></a>
 
+<p>2020-02-08:</p>
 <img src="/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/result.gif" style="zoom:125%;">
+
+<p>2020-02-10:</p>
+<p>优化了筛除误匹配算法的部分，更加减少了误匹配的情况：</p>
+<img src="/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/result2.gif" style="zoom:125%;">
+
+
       
       <!-- 打赏 -->
       

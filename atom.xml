@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://thexeme.github.io/"/>
-  <updated>2020-02-10T12:30:21.271Z</updated>
+  <updated>2020-02-12T04:33:31.639Z</updated>
   <id>https://thexeme.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>线性模型1</title>
-    <link href="https://thexeme.github.io/2020/02/10/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B1/"/>
-    <id>https://thexeme.github.io/2020/02/10/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B1/</id>
-    <published>2020-02-10T08:55:02.000Z</published>
-    <updated>2020-02-10T12:30:21.271Z</updated>
+    <title>线性模型2</title>
+    <link href="https://thexeme.github.io/2020/02/12/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B2/"/>
+    <id>https://thexeme.github.io/2020/02/12/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B2/</id>
+    <published>2020-02-12T02:06:30.000Z</published>
+    <updated>2020-02-12T04:33:31.639Z</updated>
     
     <summary type="html">
     
@@ -29,9 +29,46 @@
       
         
         
-          &lt;h2 id=&quot;线性模型的基本形式&quot;&gt;&lt;a href=&quot;#线性模型的基本形式&quot; class=&quot;headerlink&quot; title=&quot;线性模型的基本形式&quot;&gt;&lt;/a&gt;线性模型的基本形式&lt;/h2&gt;&lt;img
+          &lt;h2 id=&quot;类别&quot;&gt;&lt;a href=&quot;#类别&quot; class=&quot;headerlink&quot; title=&quot;类别&quot;&gt;&lt;/a&gt;类别&lt;/h2&gt;&lt;h3 id=&quot;线性模型中的多分类学习&quot;&gt;&lt;a href=&quot;#线性模型中的多分类学习&quot; class=&quot;headerlink&quot;
         
       
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://thexeme.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="机器学习" scheme="https://thexeme.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>线性模型1</title>
+    <link href="https://thexeme.github.io/2020/02/10/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B1/"/>
+    <id>https://thexeme.github.io/2020/02/10/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B1/</id>
+    <published>2020-02-10T08:55:02.000Z</published>
+    <updated>2020-02-10T12:33:19.426Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;线性模型的基本形式&quot;&gt;&lt;a href=&quot;#线性模型的基本形式&quot; class=&quot;headerlink&quot; title=&quot;线性模型的基本形式&quot;&gt;&lt;/a&gt;线性模型的基本形式&lt;/h2&gt;&lt;img src=&quot;/2020/02/10/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B1/基本形式.png&quot; style=&quot;zoom:100%;&quot;&gt;
+
+&lt;h3 id=&quot;线性回归&quot;&gt;&lt;a href=&quot;#线性回归&quot; class=&quot;headerlink&quot; title=&quot;线性回归&quot;&gt;&lt;/a&gt;线性回归&lt;/h3&gt;&lt;p&gt;“线性回归” (linear regression)试图学得一个线性模型以尽可能准确地预测实值输出标记。通常使用均方误差，亦称平方损失，来作为性能度量，试图使均方误差最小。&lt;/p&gt;
+&lt;p&gt;基于均方误差最小化来进行模型求解的方法称为”最小二乘法” (least suare method). 在线性回归中，最小二乘法就是试图找到一条直线，使所有样本到直线上的欧氏距离之和最小.(最小二乘法用途很广，不仅限于线性回归)&lt;/p&gt;
+&lt;p&gt;在求解使得均方差最小化的过程中，称为线性回归模型对最小二乘的参数估计。我们可对其均方差求导，另求导式为零，则可得w与b的最优解。&lt;/p&gt;
+&lt;p&gt;然而现实中，往往会求出多个解。这时选择哪一个作为解进行输出，则由算法的归纳偏好决定。常见的做法是引入正则化(regularization) 项.如，假设我们认为示例所对应的输出标记是在指数尺度上变化，则可以使得 lny = wx +b 。这就是”对数线性回归” (log-linear regression)。&lt;/p&gt;
+&lt;p&gt;更一般地，考虑单调可微函数g(.) ， 令 g(y) = wx + b , 这样得到的模型称为” 广义线性模型” (generalized linear model) ，其中函数g() 称为”联系函数” (link function)。&lt;/p&gt;
+&lt;h3 id=&quot;对数几率回归&quot;&gt;&lt;a href=&quot;#对数几率回归&quot; class=&quot;headerlink&quot; title=&quot;对数几率回归&quot;&gt;&lt;/a&gt;对数几率回归&lt;/h3&gt;&lt;p&gt;若要做的是分类任务，只需找一个单调可做函数将分类任务的真实标记y与线性回归模型的预测值联系起来。&lt;/p&gt;
+&lt;img src=&quot;/2020/02/10/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B1/单位阶跃函数与对数几率函数.png&quot; style=&quot;zoom:100%;&quot;&gt;
+
+&lt;p&gt;上图中，左式是对数几率函数；右式是单位阶跃函数&lt;/p&gt;
+&lt;p&gt;从图3.2 可看出，单位阶跃函数不连续，因此不能直接使用，于是我们使用另外的单调可微的连续函数：对数几率函数。&lt;/p&gt;
+&lt;p&gt;对数几率函数是一种”Sigmoid 函数” (Sigmoid 函数即形似s的函数)，它将z值转化为一个接近0或1 的y值并且其输出值在z=0 附近变化很陡.将对数几率函数作为g()使用于广义线性模型 g(y) = wx + b 中即可将分类标记与回归模型联系起来。&lt;/p&gt;
+&lt;p&gt;这个方法是在用线性回归模型的预测结果去逼近真实标记的对数几率，因此，其对应的模型称为”对数几率回归”，虽然它的名字是”回归”，但实际是一种分类学习方法。&lt;/p&gt;
+&lt;p&gt;在其求解中，我们可通过”极大似然法” (maximum likelihood method)来估计ω和b。即令每个样本属于其真实标记的概率越大越好。最终得出的式子是关于β 的高阶可导连续凸函数，根据凸优化理论，经典的数值优化算法如梯度下降法(gradient descent method) 、牛顿法(Newton method)等都可求得其最优解。&lt;/p&gt;
+&lt;h4 id=&quot;梯度下降&quot;&gt;&lt;a href=&quot;#梯度下降&quot; class=&quot;headerlink&quot; title=&quot;梯度下降&quot;&gt;&lt;/a&gt;梯度下降&lt;/h4&gt;&lt;p&gt;有一可微分的函数。这个函数就代表着一座山。我们的目标就是找到这个函数的最小值，也就是山底。根据之前的场景假设，最快的下山的方式就是找到当前位置最陡峭的方向，然后沿着此方向向下走，对应到函数中，就是找到给定点的梯度 ，然后朝着梯度相反的方向，就能让函数值下降的最快。因为梯度的方向就是函数之变化最快的方向。所以，我们重复利用这个方法，反复求取梯度，最后就能到达局部的最小值，这就类似于我们下山的过程。而求取梯度就确定了最陡峭的方向，也就是测量下降方向的手段。&lt;/p&gt;
+&lt;p&gt;在单变量的函数中，梯度其实就是函数的微分，代表着函数在某个给定点的切线的斜率；在多变量函数中，梯度是一个向量，向量有方向，梯度的方向就指出了函数在给定点的上升最快的方向。&lt;/p&gt;
     
     </summary>
     
@@ -48,13 +85,13 @@
     <link href="https://thexeme.github.io/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/"/>
     <id>https://thexeme.github.io/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/</id>
     <published>2020-02-08T11:03:07.000Z</published>
-    <updated>2020-02-08T14:10:30.968Z</updated>
+    <updated>2020-02-11T11:07:18.195Z</updated>
     
     <summary type="html">
     
       &lt;h2 id=&quot;目标&quot;&gt;&lt;a href=&quot;#目标&quot; class=&quot;headerlink&quot; title=&quot;目标&quot;&gt;&lt;/a&gt;目标&lt;/h2&gt;&lt;p&gt;代码实现相机运动方向的检测，用于后面的相机运动补偿。&lt;br&gt;目前还未完成，本篇仅为今日的小结&lt;/p&gt;
 &lt;h2 id=&quot;算法大致思路&quot;&gt;&lt;a href=&quot;#算法大致思路&quot; class=&quot;headerlink&quot; title=&quot;算法大致思路&quot;&gt;&lt;/a&gt;算法大致思路&lt;/h2&gt;&lt;p&gt;该算法思路仅为当前思路，后续还会继续改进&lt;/p&gt;
-&lt;p&gt;对于每一帧：&lt;br&gt;1、提取其Surf特征点&lt;br&gt;2、与上一帧的特征点进行匹配，这里可以使用FlannBased与BruteForceMatcher，FlannBased更快而BruteForceMatcher更精确；考虑到视频处理的实时性，本人目前使用FlannBased&lt;br&gt;3、基于距离筛除一些不太可能的匹配，此步骤的前提是场景不会发生形变&lt;br&gt;4、根据已经匹配的角点及其移动距离与方向，从而获取当前相机在此参考系下的移动情况&lt;/p&gt;
+&lt;p&gt;对于每一帧：&lt;br&gt;1、提取其Surf特征点&lt;br&gt;2、与上一帧的特征点进行匹配，这里可以使用FlannBased与BruteForceMatcher，FlannBased更快而BruteForceMatcher更精确；考虑到视频处理的实时性，本人目前使用FlannBased&lt;br&gt;3、基于距离筛除一些不太可能的匹配，此步骤的前提是场景不会发生形变&lt;br&gt;4、根据已经匹配的特征点及其移动距离与方向，从而获取当前相机在此参考系下的移动情况&lt;/p&gt;
 &lt;h3 id=&quot;主要使用到数据结构与对象&quot;&gt;&lt;a href=&quot;#主要使用到数据结构与对象&quot; class=&quot;headerlink&quot; title=&quot;主要使用到数据结构与对象&quot;&gt;&lt;/a&gt;主要使用到数据结构与对象&lt;/h3&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cv::Ptr&amp;lt;SurfFeatureDetector&amp;gt; detector;&lt;span class=&quot;comment&quot;&gt;//检测器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::&lt;span class=&quot;built_in&quot;&gt;vector&lt;/span&gt;&amp;lt;cv::KeyPoint&amp;gt; key_points_1, key_points_2;&lt;span class=&quot;comment&quot;&gt;//提取的特征点序列&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cv::Mat descriptors1, descriptors2;&lt;span class=&quot;comment&quot;&gt;//特征描述子&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cv::Ptr&amp;lt;cv::DescriptorMatcher&amp;gt; matcher = &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    cv::DescriptorMatcher::create(&lt;span class=&quot;string&quot;&gt;&quot;FlannBased&quot;&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//FlannBased匹配&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;std&lt;/span&gt;::&lt;span class=&quot;built_in&quot;&gt;vector&lt;/span&gt;&amp;lt;cv::DMatch&amp;gt; dmatches;&lt;span class=&quot;comment&quot;&gt;//匹配序列&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;目前进度&quot;&gt;&lt;a href=&quot;#目前进度&quot; class=&quot;headerlink&quot; title=&quot;目前进度&quot;&gt;&lt;/a&gt;目前进度&lt;/h3&gt;&lt;img src=&quot;/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/match1.png&quot; style=&quot;zoom:125%;&quot;&gt;
