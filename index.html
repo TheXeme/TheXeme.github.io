@@ -65,6 +65,103 @@
     
     
     
+    <article id="post-决策树1" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/02/17/%E5%86%B3%E7%AD%96%E6%A0%911/"
+    >决策树1</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/02/17/%E5%86%B3%E7%AD%96%E6%A0%911/" class="article-date">
+  <time datetime="2020-02-17T08:36:30.000Z" itemprop="datePublished">2020-02-17</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h2><p>一般的，一棵决策树包含一个根结点、若干个内部结点和若干个叶结点;叶结点对应于决策结果(底部决策完毕)，其他每个结点则对应于一个属性测试;每个结点包含的样本集合根据属性测试的结果被划分到子结点中(子决策);根结点包含样本全集.从根结点到每个叶结点的路径对应了一个判定测试序列.决策树学习的目的是为了产生一棵泛化能力强，即处理未见示例能力强的决策树，其基本流程遵循简单且直观的”分而治之” (divide-and-conquer) 策略。</p>
+<p>决策树的生成是一个递归过程.在决策树基本算法中，有三种情形会导致递归返回:<br>(1) 当前结点包含的样本全属于同一类别，无需划分(已经可以得出是正样本还是负样本);<br>(2) 当前属性集为空，或是所有样本在所有属性上取值相同，无法划分;<br>(3) 当前结点包含的样本集合为空，不能划分.</p>
+<p>在第(2)种情形下，我们把当前结点标记为叶结点，井将其类别设定为该结点所含样本最多的类别;<br>在第(3) 种情形下，同样把当前结点标记为叶结点，但将其类别设定为其父结点所含样本最多的类别.<br>注意这两种情形的处理实质不同:情形(2)是在利用当前结点的后验分布，而情形(3)则是把父结点的样本分布作为当前结点的先验分布.</p>
+<h2 id="划分选择"><a href="#划分选择" class="headerlink" title="划分选择"></a>划分选择</h2><p>决策树学习的关键是如何选择最优划分属性。</p>
+<h3 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h3><p>“信息熵” (information entropy)是度量样本集合纯度最常用的一种指标.假定当前样本集合D 中第k类样本所占的比例为Pk (k = 1, 2,. . . , IYI) ，则D的信息熵定义为:(值越小，则D的纯度越高)(在好瓜坏瓜分类中，可以理解为好瓜比例远高于坏瓜比例，或者反过来，因为通过求导可以知道，就是要使得样本比例中某一部分远高于其他；依此，用信息熵最小，就可以知道挑出某样本的“可行率”,若信息熵值越高，则越混乱(平均)，纯度越低)</p>
+<img src="/2020/02/17/%E5%86%B3%E7%AD%96%E6%A0%911/信息熵.png" style="zoom:100%;">
+
+
+
+<p>假定离散属性a有V个可能的取值，给分支结点赋予权重IDVI / IDI ，即样本数越多的分支结点的影响越大，于是可计算出用属性a对样本集D进行划分所获得的”信息增益” (information gain)</p>
+<img src="/2020/02/17/%E5%86%B3%E7%AD%96%E6%A0%911/信息增益.png" style="zoom:75%;">
+
+<p>一般而言，信息增益越大(子类的信息熵更小，因此说明这个分类器更能挑)，则意味着使周属性a来进行划分所获得的”纯度提升”越大.因此，我们可用信息增益来进行决策树的划分属性选择。ID3 决策树学习算法(Iterative Dichotomiser 迭代二分器)就是以信息增益为准则来选择划分属性。</p>
+<p>通过在每个叶子节点计算使用剩余的所有可用属性会在此处的信息增益，挑出最高的作为此叶子节点的判别属性，就可以获得决策树(ID3决策树)</p>
+<h3 id="增益率"><a href="#增益率" class="headerlink" title="增益率"></a>增益率</h3><p>但是信息增益准则也有坏处，信息增益准则对可取值数目较多的属性有所偏好。比如，将所有的样本单独分为一分支，这样每个节点仅有一个样本，分支节点纯度已达最大。然而，这样的决策树显然不具有泛化能力，无法对新样本进行有效预测.</p>
+<p>为减少这种偏好可能带来的不利影响，著名的 C4.5 决策树算法不直接使用信息增益，而是使用”增益率” (gain ratio) 来选择最优划分属性.采用与式(4.2) 相同的符号表示，增益率定义为：</p>
+<img src="/2020/02/17/%E5%86%B3%E7%AD%96%E6%A0%911/增益率.png" style="zoom:100%;">
+
+<p>其中:属性a的”固有值”:属性a的可能取值数目越多(即V越大)，则IV(a) 的值通常会越大.</p>
+<img src="/2020/02/17/%E5%86%B3%E7%AD%96%E6%A0%911/固有值.png" style="zoom:100%;">
+
+<p>由于增益率准则对可取值数目较少的属性有所偏好，因此 C4.5决策树算法不直接使用增益率，而是 : 先从候选划分属性中找出信息增益高于平均水平的属性，再从<br>中选择增益率最高的.</p>
+<h3 id="基尼指数"><a href="#基尼指数" class="headerlink" title="基尼指数"></a>基尼指数</h3><p>CART 决策树使用”基尼指数” (Gini index)来选择划分属性.数据集D的纯度可用基尼值来度量:</p>
+<img src="/2020/02/17/%E5%86%B3%E7%AD%96%E6%A0%911/基尼值.png" style="zoom:100%;">
+
+<p>直观来说， Gini(D) 反映了从数据集D中随机抽取两个样本其类别标记不一致的概率.因此，Gini(D) 越小，则数据集D 的纯度越高.</p>
+<p>属性α 的基尼指数定义为：</p>
+<img src="/2020/02/17/%E5%86%B3%E7%AD%96%E6%A0%911/基尼指数.png" style="zoom:100%;">
+
+<p>于是，CART 决策树在候选属性集合A中，选择那个使得划分后基尼指数最小的属性作为最优划分属性</p>
+      
+      <a class="article-more-link" href="/2020/02/17/%E5%86%B3%E7%AD%96%E6%A0%911/">阅读更多...</a>
+      
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://thexeme.github.io/2020/02/17/%E5%86%B3%E7%AD%96%E6%A0%911/" data-id="ck6k65isi0000xgtx0fli56w2"
+        class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+  
+
+</article>
+    
     <article id="post-相机运动方向检测2" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -107,12 +204,10 @@
       
 
       
-      <h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><p>关于之前开的相机运动方向检测的代码实现，目前已经大致完成，总共有五个测试视频，效果如下：</p>
-<p>测试视频1：</p>
-<img src="/2020/02/13/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B2/result1.gif" style="zoom:100%;">
+      <h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><p>关于之前开的相机运动方向检测的代码实现，目前已经大致完成</p>
+<img src="/2020/02/13/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B2/result_mainPage.png" style="zoom:100%;">
 
-<p>测试视频2：</p>
-<img src="/2020/02/13/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B2/result2.gif" style="zoom:100%;">
+<p>总共有五个测试视频，效果如下：</p>
       
       <a class="article-more-link" href="/2020/02/13/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B2/">阅读更多...</a>
       
@@ -125,71 +220,6 @@
         class="article-share-link">分享</a>
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/" rel="tag">机器视觉</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-  
-
-</article>
-    
-    <article id="post-决策树1" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/02/12/%E5%86%B3%E7%AD%96%E6%A0%911/"
-    >决策树1</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/02/12/%E5%86%B3%E7%AD%96%E6%A0%911/" class="article-date">
-  <time datetime="2020-02-12T08:36:30.000Z" itemprop="datePublished">2020-02-12</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      
-      
-      <!-- 打赏 -->
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://thexeme.github.io/2020/02/12/%E5%86%B3%E7%AD%96%E6%A0%911/" data-id="ck6k65isi0000xgtx0fli56w2"
-        class="article-share-link">分享</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
 
     </footer>
 
