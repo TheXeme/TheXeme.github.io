@@ -91,24 +91,13 @@
     <content><![CDATA[<h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><p>关于之前开的相机运动方向检测的代码实现，目前已经大致完成</p>
 <img src="/2020/02/13/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B2/result_mainPage.png" style="zoom:100%;">
 
-<p>总共有五个测试视频，效果如下：</p>
+<p>测试视频，效果如下：</p>
 <a id="more"></a>
 
 <p>测试视频1：</p>
 <img src="/2020/02/13/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B2/result1.gif" style="zoom:100%;">
 
-<p>测试视频2：</p>
-<img src="/2020/02/13/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B2/result2.gif" style="zoom:100%;">
-
-<p>测试视频3：</p>
-<img src="/2020/02/13/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B2/result3.gif" style="zoom:100%;">
-
-<p>测试视频4：</p>
-<img src="/2020/02/13/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B2/result4.gif" style="zoom:100%;">
-
-<p>测试视频5：</p>
-<img src="/2020/02/13/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B2/result5.gif" style="zoom:100%;">
-
+<p>原本总共有五个测试视频，由于服务器速度较慢，如果全放上来会加载很慢，因此就放一个上来</p>
 <h3 id="测试数据来源"><a href="#测试数据来源" class="headerlink" title="测试数据来源"></a>测试数据来源</h3><p>关于测试的视频来源，为 Hopkins 155 数据库。</p>
 ]]></content>
       <categories>
