@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://thexeme.github.io/"/>
-  <updated>2020-02-19T04:27:46.568Z</updated>
+  <updated>2020-02-21T04:49:49.632Z</updated>
   <id>https://thexeme.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>神经网络</title>
+    <link href="https://thexeme.github.io/2020/02/20/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    <id>https://thexeme.github.io/2020/02/20/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</id>
+    <published>2020-02-20T14:36:30.000Z</published>
+    <updated>2020-02-21T04:49:49.632Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;神经元模型&quot;&gt;&lt;a href=&quot;#神经元模型&quot; class=&quot;headerlink&quot; title=&quot;神经元模型&quot;&gt;&lt;/a&gt;神经元模型&lt;/h2&gt;&lt;img src=&quot;/2020/02/20/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/神经元模型.png&quot; style=&quot;zoom:100%;&quot;&gt;
+
+&lt;p&gt;上图为”M-P 神经元模型” [McCulloch and Pitts, 1943] 。&lt;/p&gt;
+&lt;p&gt;神经元接收到来自n个其他神经元传递过来的输入信号，这些输入信号通过带权重的连接(connection)进行传递，神经元接收到的总输入值将与神经元的阀值进行比较，然后通过”激活函数” (activation function) 处理以产生神经元的输出.&lt;/p&gt;
+&lt;p&gt;理想中的激活函数是阶跃函数，但阶跃函数具有不连续、不光滑等不太好的性质，因此实际常用Sigmoid函数作为激活函数（有时也称为”挤压函数” (squashing function）)，对数几率函数时Sigmoid函数的代表。(见前面线性模型中谈到的对数几率回归)&lt;/p&gt;
+&lt;img src=&quot;/2020/02/20/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/激活函数.png&quot; style=&quot;zoom:100%;&quot;&gt;
+
+&lt;p&gt;把许多个这样的神经元按一定的层次结构连接起来，就得到了神经网络.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://thexeme.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="机器学习" scheme="https://thexeme.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>决策树1</title>
@@ -130,7 +158,7 @@
     <link href="https://thexeme.github.io/2020/02/10/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B1/"/>
     <id>https://thexeme.github.io/2020/02/10/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B1/</id>
     <published>2020-02-10T08:55:02.000Z</published>
-    <updated>2020-02-10T12:33:19.426Z</updated>
+    <updated>2020-02-20T04:11:08.008Z</updated>
     
     <summary type="html">
     
