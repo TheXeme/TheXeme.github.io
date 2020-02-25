@@ -65,6 +65,109 @@
     
     
     
+    <article id="post-支持向量机" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/"
+    >支持向量机</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/" class="article-date">
+  <time datetime="2020-02-25T05:00:00.000Z" itemprop="datePublished">2020-02-25</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <blockquote>
+<p>由于内容比较多，所以写了比较长的时间，从22号断断续续写到25号才写完</p>
+</blockquote>
+<h2 id="间隔与支持向量"><a href="#间隔与支持向量" class="headerlink" title="间隔与支持向量"></a>间隔与支持向量</h2><p>给定训练样本集：</p>
+<img src="/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/训练样本集.png" style="zoom:100%;">
+
+<p>分类学习最基本的想法就是基于训练、集D 在样本空间中找到一个划分超平面、将<br>不同类别的样本分开。</p>
+<p>在样本空间中，划分超平面可通过如下线性方程来描述:</p>
+<img src="/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/线性方程.png" style="zoom:100%;">
+
+<p>其中w = (ω1,ω2, … ,ωd) 为法向量，决定了超平面的方向; b 为位移项，决定了超平面与原点之间的距离.显然，划分超平面可被法向量ω和位移b确定，下面我们将其记为(ω,b).样本空间中任意点x到超平面(ω,b)的距离可写为:</p>
+<img src="/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/点到平面距离.png" style="zoom:100%;">
+
+<p>证明如下：</p>
+<img src="/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/点到平面距离证明.jpg" style="zoom:50%;">
+
+<p>假设超平面(ω,b)能将训练样本正确分类，即对于(xi,yi) ∈ D , 若yi = +1 , 则有 ωTxi+b&gt;0;若yi = -1 , 则有 ωTxi+b&lt;0。令：(ω和b参数的约束式)</p>
+<img src="/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/支持向量机基本分类式.png" style="zoom:100%;">
+
+<p>如下图所示，距离超平面最近的这几个训练样本点使上式的等号成立，它们被称为”支持向量” (support vector) ，两个异类支持向量到超平面的距离之和为:</p>
+<img src="/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/异类间隔.png" style="zoom:100%;">
+
+<p>它被称为间隔。(使用上面的点到超平面距离公式代入上面正确分类的定义式即可很容易推导出)</p>
+<img src="/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/支持向量与间隔.png" style="zoom:100%;">
+
+<p>欲找到具有”最大间隔” (maximum margin) 的划分超平面，也就是要找<br>到能满足式中约束的参数ω和b ， 使得γ最大，即:</p>
+<img src="/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/约束式写法1.png" style="zoom:100%;">
+
+<p>其中s.t. ，指 subject to，受限制于… ，即指代2式为约束，然后使得1式最大。之所以可以写成2式，是因为在负样本中，亦有： (-1)*(-1)=1&gt;0 </p>
+<p>注：在此处，间隔看似仅与ω有关，但事实上b通过约束式暗中地影响着ω的取值，进而对间隔产生影响</p>
+<p>重新看回上式为了最大化1式(最大化间隔)，只需使其分母最小，因此可以等价为：（6.6）</p>
+<img src="/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/约束式写法2.png" style="zoom:100%;">
+
+<p>这就是支持向量机(Support Vector Machine，简称SVM) 的基本型.</p>
+<p>最后，超平面对应的模型为：</p>
+<img src="/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/超平面模型.png" style="zoom:100%;">
+      
+      <a class="article-more-link" href="/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/">阅读更多...</a>
+      
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://thexeme.github.io/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/" data-id="ck71frfhq000058tx3pruclkj"
+        class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+  
+
+</article>
+    
     <article id="post-神经网络" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -802,78 +905,14 @@
 
 </article>
     
-    <article id="post-FirstBlog" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/01/01/FirstBlog/"
-    >My First Blog in here</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/01/01/FirstBlog/" class="article-date">
-  <time datetime="2019-12-31T16:00:00.000Z" itemprop="datePublished">2020-01-01</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <p>欢迎来到吴泽鑫的博客！</p>
-<h2 id="About-me"><a href="#About-me" class="headerlink" title="About me"></a>About me</h2><h3 id="代码仓库"><a href="#代码仓库" class="headerlink" title="代码仓库"></a>代码仓库</h3><h4 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h4><p> <a href="https://github.com/TheXeme" target="_blank" rel="noopener">https://github.com/TheXeme</a></p>
-<h3 id="博客"><a href="#博客" class="headerlink" title="博客"></a>博客</h3><h4 id="GithubBlog"><a href="#GithubBlog" class="headerlink" title="GithubBlog"></a>GithubBlog</h4><p> <a href="https://thexeme.github.io/">https://thexeme.github.io/</a></p>
-<h4 id="GiteeBlog"><a href="#GiteeBlog" class="headerlink" title="GiteeBlog"></a>GiteeBlog</h4><p><a href="https://thexeme.gitee.io/" target="_blank" rel="noopener">https://thexeme.gitee.io/</a></p>
-
-      
-      <!-- 打赏 -->
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://thexeme.github.io/2020/01/01/FirstBlog/" data-id="ck6g00vem000hootxfypihoqh"
-        class="article-share-link">分享</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-  
-
-</article>
-    
   </article>
   
 
+  
+  <nav class="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+  </nav>
   
 </section>
 </div>

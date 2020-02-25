@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://thexeme.github.io/"/>
-  <updated>2020-02-21T04:53:12.706Z</updated>
+  <updated>2020-02-25T05:14:22.833Z</updated>
   <id>https://thexeme.github.io/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>支持向量机</title>
+    <link href="https://thexeme.github.io/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/"/>
+    <id>https://thexeme.github.io/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/</id>
+    <published>2020-02-25T05:00:00.000Z</published>
+    <updated>2020-02-25T05:14:22.833Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;由于内容比较多，所以写了比较长的时间，从22号断断续续写到25号才写完&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;间隔与支持向量&quot;&gt;&lt;a href=&quot;#间隔与支持向量&quot; class=&quot;headerlink&quot; title=&quot;间隔与支持向量&quot;&gt;&lt;/a&gt;间隔与支持向量&lt;/h2&gt;&lt;p&gt;给定训练样本集：&lt;/p&gt;
+&lt;img src=&quot;/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/训练样本集.png&quot; style=&quot;zoom:100%;&quot;&gt;
+
+&lt;p&gt;分类学习最基本的想法就是基于训练、集D 在样本空间中找到一个划分超平面、将&lt;br&gt;不同类别的样本分开。&lt;/p&gt;
+&lt;p&gt;在样本空间中，划分超平面可通过如下线性方程来描述:&lt;/p&gt;
+&lt;img src=&quot;/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/线性方程.png&quot; style=&quot;zoom:100%;&quot;&gt;
+
+&lt;p&gt;其中w = (ω1,ω2, … ,ωd) 为法向量，决定了超平面的方向; b 为位移项，决定了超平面与原点之间的距离.显然，划分超平面可被法向量ω和位移b确定，下面我们将其记为(ω,b).样本空间中任意点x到超平面(ω,b)的距离可写为:&lt;/p&gt;
+&lt;img src=&quot;/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/点到平面距离.png&quot; style=&quot;zoom:100%;&quot;&gt;
+
+&lt;p&gt;证明如下：&lt;/p&gt;
+&lt;img src=&quot;/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/点到平面距离证明.jpg&quot; style=&quot;zoom:50%;&quot;&gt;
+
+&lt;p&gt;假设超平面(ω,b)能将训练样本正确分类，即对于(xi,yi) ∈ D , 若yi = +1 , 则有 ωTxi+b&amp;gt;0;若yi = -1 , 则有 ωTxi+b&amp;lt;0。令：(ω和b参数的约束式)&lt;/p&gt;
+&lt;img src=&quot;/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/支持向量机基本分类式.png&quot; style=&quot;zoom:100%;&quot;&gt;
+
+&lt;p&gt;如下图所示，距离超平面最近的这几个训练样本点使上式的等号成立，它们被称为”支持向量” (support vector) ，两个异类支持向量到超平面的距离之和为:&lt;/p&gt;
+&lt;img src=&quot;/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/异类间隔.png&quot; style=&quot;zoom:100%;&quot;&gt;
+
+&lt;p&gt;它被称为间隔。(使用上面的点到超平面距离公式代入上面正确分类的定义式即可很容易推导出)&lt;/p&gt;
+&lt;img src=&quot;/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/支持向量与间隔.png&quot; style=&quot;zoom:100%;&quot;&gt;
+
+&lt;p&gt;欲找到具有”最大间隔” (maximum margin) 的划分超平面，也就是要找&lt;br&gt;到能满足式中约束的参数ω和b ， 使得γ最大，即:&lt;/p&gt;
+&lt;img src=&quot;/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/约束式写法1.png&quot; style=&quot;zoom:100%;&quot;&gt;
+
+&lt;p&gt;其中s.t. ，指 subject to，受限制于… ，即指代2式为约束，然后使得1式最大。之所以可以写成2式，是因为在负样本中，亦有： (-1)*(-1)=1&amp;gt;0 &lt;/p&gt;
+&lt;p&gt;注：在此处，间隔看似仅与ω有关，但事实上b通过约束式暗中地影响着ω的取值，进而对间隔产生影响&lt;/p&gt;
+&lt;p&gt;重新看回上式为了最大化1式(最大化间隔)，只需使其分母最小，因此可以等价为：（6.6）&lt;/p&gt;
+&lt;img src=&quot;/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/约束式写法2.png&quot; style=&quot;zoom:100%;&quot;&gt;
+
+&lt;p&gt;这就是支持向量机(Support Vector Machine，简称SVM) 的基本型.&lt;/p&gt;
+&lt;p&gt;最后，超平面对应的模型为：&lt;/p&gt;
+&lt;img src=&quot;/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/超平面模型.png&quot; style=&quot;zoom:100%;&quot;&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://thexeme.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="机器学习" scheme="https://thexeme.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>神经网络</title>
