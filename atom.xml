@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://thexeme.github.io/"/>
-  <updated>2020-02-25T05:14:22.833Z</updated>
+  <updated>2020-03-11T03:09:21.588Z</updated>
   <id>https://thexeme.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker与DVWA</title>
+    <link href="https://thexeme.github.io/2020/03/11/Docker%E4%B8%8EDVWA/"/>
+    <id>https://thexeme.github.io/2020/03/11/Docker%E4%B8%8EDVWA/</id>
+    <published>2020-03-11T02:51:02.000Z</published>
+    <updated>2020-03-11T03:09:21.588Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;由于需要做网络渗透方面的学习，所以需要建立一些靶机，因此使用docker容器，建立DVWA&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://thexeme.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="网络安全" scheme="https://thexeme.github.io/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>支持向量机</title>

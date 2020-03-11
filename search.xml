@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Docker与DVWA</title>
+    <url>/2020/03/11/Docker%E4%B8%8EDVWA/</url>
+    <content><![CDATA[<p>由于需要做网络渗透方面的学习，所以需要建立一些靶机，因此使用docker容器，建立DVWA</p>
+<a id="more"></a>
+
+<h3 id="related-works"><a href="#related-works" class="headerlink" title="related works"></a>related works</h3><p>安装docker toolbox<br>为了节省C盘空间，可以在Oracle VM VirtualBox中将docker虚拟机的虚拟磁盘移到了d盘去</p>
+<p>安装完docker toolbox 后，首先要做的就是换源</p>
+<p>我使用了阿里云的源</p>
+<blockquote>
+<p>docker-machine ssh default</p>
+<p>sudo sed -i “s|EXTRA_ARGS=’|EXTRA_ARGS=’–registry-mirror=<a href="https://6t7smst7.mirror.aliyuncs.com" target="_blank" rel="noopener">https://6t7smst7.mirror.aliyuncs.com</a> |g” /var/lib/boot2docker/profile </p>
+<p>exit</p>
+</blockquote>
+<p>换完后重启</p>
+<blockquote>
+<p>docker-machine restart default</p>
+</blockquote>
+<p>拉取DVWA:</p>
+<blockquote>
+<p>docker pull citizenstig/dvwa</p>
+</blockquote>
+<p>运行:</p>
+<blockquote>
+<p>docker run -d -p 8080:80 citizenstig/dvwa</p>
+</blockquote>
+<p>成功后，可以查看状态：</p>
+<blockquote>
+<p>docker ps -a</p>
+</blockquote>
+<img src="/2020/03/11/Docker%E4%B8%8EDVWA/ps.png" style="zoom:100%;">
+
+<p>查看Ip:</p>
+<blockquote>
+<p>docker-machine ip default </p>
+</blockquote>
+<p>通过该ip以及相应的端口(前面设置的是8080)，即可访问dvwa:</p>
+<img src="/2020/03/11/Docker%E4%B8%8EDVWA/dvwa1.png" style="zoom:100%;">
+
+<p>使用默认的账号登录：<br>admin<br>password</p>
+<p>即可成功进入：</p>
+<img src="/2020/03/11/Docker%E4%B8%8EDVWA/dvwa2.png" style="zoom:100%;">
+
+<p>在DVWA Security中，可以设置security level ，刚开始可以将安防等级设置较低，降低渗透难度：</p>
+<img src="/2020/03/11/Docker%E4%B8%8EDVWA/dvwa3.png" style="zoom:100%;">
+
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>网络安全</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>支持向量机</title>
     <url>/2020/02/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/</url>
     <content><![CDATA[<blockquote>
