@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://thexeme.github.io/"/>
-  <updated>2020-03-11T03:09:21.588Z</updated>
+  <updated>2020-05-02T01:54:42.445Z</updated>
   <id>https://thexeme.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HTTP与FTP服务器搜索</title>
+    <link href="https://thexeme.github.io/2020/05/02/HTTP%E4%B8%8EFTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%9C%E7%B4%A2/"/>
+    <id>https://thexeme.github.io/2020/05/02/HTTP%E4%B8%8EFTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%9C%E7%B4%A2/</id>
+    <published>2020-05-02T01:35:00.000Z</published>
+    <updated>2020-05-02T01:54:42.445Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;HTTP与FTP服务器搜索软件，为本人的计算机网络的课程设计作业&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://thexeme.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="TCP通信" scheme="https://thexeme.github.io/tags/TCP%E9%80%9A%E4%BF%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker与DVWA</title>

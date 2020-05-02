@@ -65,6 +65,79 @@
     
     
     
+    <article id="post-运动相机下的运动目标跟踪2" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/02/05/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/"
+    >运动相机下的运动目标跟踪2</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/02/05/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/" class="article-date">
+  <time datetime="2020-02-05T08:40:02.000Z" itemprop="datePublished">2020-02-05</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p>以下为阅读《Moving Objects Detection with a Moving Camera: A Comprehensive Review》随读笔记</p>
+<h3 id="Motion-segmentation-运动分割法"><a href="#Motion-segmentation-运动分割法" class="headerlink" title="Motion segmentation 运动分割法"></a>Motion segmentation 运动分割法</h3><p>运动分割法的大体思路为利用特征点的轨迹来分割每一帧，分成静态背景与移动物体。</p>
+<img src="/2020/02/05/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/运动分割法example.png" style="zoom:125%;">
+
+<p>《Background subtraction for moving cameras based on trajectory-controlled segmentation and label inference》(oct 2015)提出：根据特征点的轨迹相似度，并利用PCA算法(主成分分析算法)筛除false trajectories，从而获取几类集群特征点。</p>
+<p>《a probabilistic model for causal motion segmentation in moving camera videos》(2016)使用了稠密光流差、旋转流差，从而获得了物体的移动流。然后由平移流(translational flow)估计角度场，并根据每个平移流的平移大小作为该平移角度的可靠性指标，然后由符合条件的流动角度的可能性评估每个像素的流动方向。最后，用贝叶斯公式(Bayes’ rule)获得每个像素的次可能移动，然后会被用于最后的分割当中。作者还提出了，利用一个修正的RANSAC算法选择3个超像素，然后用于去分割视频的第一帧，从而用于后续的估计背景的移动以抵消相机的晃动。</p>
+      
+      <a class="article-more-link" href="/2020/02/05/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/">阅读更多...</a>
+      
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://thexeme.github.io/2020/02/05/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA2/" data-id="ck6g00vek000footx7gsh22hq"
+        class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/" rel="tag">机器视觉</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+  
+
+</article>
+    
     <article id="post-运动相机下的运动目标跟踪1" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
