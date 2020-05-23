@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://thexeme.github.io/"/>
-  <updated>2020-05-02T02:02:18.937Z</updated>
+  <updated>2020-05-23T08:04:57.290Z</updated>
   <id>https://thexeme.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>靶机渗透-DC3</title>
+    <link href="https://thexeme.github.io/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/"/>
+    <id>https://thexeme.github.io/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/</id>
+    <published>2020-05-23T07:57:00.000Z</published>
+    <updated>2020-05-23T08:04:57.290Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;靶机渗透实战：DC3靶机入侵&lt;/p&gt;
+&lt;p&gt;使用环境：Linux version 5.2.0-kali2-amd64&lt;br&gt;入侵对象：DC-3靶机-ubuntu 16.04&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://thexeme.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="网络安全" scheme="https://thexeme.github.io/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>HTTP与FTP服务器搜索</title>

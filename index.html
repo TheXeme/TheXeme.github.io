@@ -65,6 +65,75 @@
     
     
     
+    <article id="post-靶机渗透-DC3" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/"
+    >靶机渗透-DC3</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/" class="article-date">
+  <time datetime="2020-05-23T07:57:00.000Z" itemprop="datePublished">2020-05-23</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p>靶机渗透实战：DC3靶机入侵</p>
+<p>使用环境：Linux version 5.2.0-kali2-amd64<br>入侵对象：DC-3靶机-ubuntu 16.04</p>
+      
+      <a class="article-more-link" href="/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/">阅读更多...</a>
+      
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://thexeme.github.io/2020/05/23/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F-DC3/" data-id="ckajcjzg100007ctx3dcegl5u"
+        class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+  
+
+</article>
+    
     <article id="post-HTTP与FTP服务器搜索" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -803,80 +872,6 @@
     </div>
     <footer class="article-footer">
       <a data-url="https://thexeme.github.io/2020/02/08/%E7%9B%B8%E6%9C%BA%E8%BF%90%E5%8A%A8%E6%96%B9%E5%90%91%E6%A3%80%E6%B5%8B1/" data-id="ck6g00vdk0000ootxc1kpb0yu"
-        class="article-share-link">分享</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/" rel="tag">机器视觉</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-  
-
-</article>
-    
-    <article id="post-运动相机下的运动目标跟踪3" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/02/07/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA3/"
-    >运动相机下的运动目标跟踪3</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/02/07/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA3/" class="article-date">
-  <time datetime="2020-02-07T07:46:21.000Z" itemprop="datePublished">2020-02-07</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <p>继上篇，以下为2月7日研究《Moving Objects Detection with a Moving Camera: A Comprehensive Review》的运动分割法部分的笔记</p>
-<h3 id="Motion-segmentation-运动分割法2"><a href="#Motion-segmentation-运动分割法2" class="headerlink" title="Motion segmentation 运动分割法2"></a>Motion segmentation 运动分割法2</h3><p>《Background subtraction for moving cameras based on trajectory-controlled segmentation and label inference》(2015)提出了一个基于轨迹的分水岭分割算法。在应用一个双边的滤波器去柔化图像并增强edges后，无关梯度会被最小化，并且将轨迹点选为标签。这些标签将会用于watershed algorithm (分水岭算法,根据分水岭的构成来考虑图像的分割) 的seeds从而获得分割结果。在这个结果中，会根据轨迹的标签，将分割结果的相应标为前景与背景。最后，利用马尔可夫随机场算法(Markov Random Field，MRF)，让其中的能量函数最小化，使得用前景背景信息推断没有标签的部分的标签。</p>
-<img src="/2020/02/07/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA3/P1_2015.png" style="zoom:75%;">
-
-<p>上图中，红色点代表为检测出的背景部分，蓝色点代表检测出的前景部分；其中有一些由于噪点而误检测的特征点可以使用PCA算法筛除</p>
-<p>《A multilayer-based framework for online back-ground subtraction with freely moving cameras》(2017)提出了Multi-Layer Background Subtraction(多层的背景差法)。他们使用了多标签的分割，而非二值标签的分割。每一个动作集群点都会被联系到一层中。在每一层中，像素的动作都会由Gaussian Belief Propagation (GaBP)(高斯置信度传播算法)评估。之后，由外观模型、先前的概率图、motion estimation(动作评估)去计算之后的概率图。多标签的分割是正是基于由MRF算法中最小化能量函数得出的概率图计算的。</p>
-<img src="/2020/02/07/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA3/P2_2017.png" style="zoom:75%;">
-      
-      <a class="article-more-link" href="/2020/02/07/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA3/">阅读更多...</a>
-      
-      
-      <!-- 打赏 -->
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://thexeme.github.io/2020/02/07/%E8%BF%90%E5%8A%A8%E7%9B%B8%E6%9C%BA%E4%B8%8B%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E8%B7%9F%E8%B8%AA3/" data-id="ck6g00vf4000qootxfvgb96ey"
         class="article-share-link">分享</a>
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/" rel="tag">机器视觉</a></li></ul>
