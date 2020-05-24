@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://thexeme.github.io/"/>
-  <updated>2020-05-23T08:14:33.573Z</updated>
+  <updated>2020-05-24T04:05:20.108Z</updated>
   <id>https://thexeme.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>靶机搭建-dockerFile</title>
+    <link href="https://thexeme.github.io/2020/05/24/%E9%9D%B6%E6%9C%BA%E6%90%AD%E5%BB%BA-dockerFile/"/>
+    <id>https://thexeme.github.io/2020/05/24/%E9%9D%B6%E6%9C%BA%E6%90%AD%E5%BB%BA-dockerFile/</id>
+    <published>2020-05-24T06:57:00.000Z</published>
+    <updated>2020-05-24T04:05:20.108Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;靶机搭建：&lt;br&gt;基于docker的靶机环境建立&lt;/p&gt;
+&lt;p&gt;使用环境：&lt;br&gt;Docker version 19.03.1, build 74b1e89e8a&lt;br&gt;windows10&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://thexeme.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="网络安全" scheme="https://thexeme.github.io/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>靶机渗透-DC3</title>
