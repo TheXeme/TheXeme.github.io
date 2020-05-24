@@ -11,6 +11,80 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker image pull ubuntu:16.04</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2020/05/24/%E9%9D%B6%E6%9C%BA%E6%90%AD%E5%BB%BA-dockerFile/docker-pull.png" alt="docker-pull"></p>
+<p>更换源：<br>新建sources.list:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial main</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial main</span><br><span class="line"></span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-updates main</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-updates main</span><br><span class="line"></span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial universe</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial universe</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-updates universe</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-updates universe</span><br><span class="line"></span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-security main</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-security main</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-security universe</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-security universe</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/05/24/%E9%9D%B6%E6%9C%BA%E6%90%AD%E5%BB%BA-dockerFile/sourcelist.png" alt="sourcelist"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">COPY sources.list &#x2F;etc&#x2F;apt&#x2F;sources.list</span><br></pre></td></tr></table></figure>
+
+<p>后面修改配置文件都可以用COPY指令很方便地进行更换</p>
+<p>安装wordpress</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#docker cp wordpress-4.6.zip [容器ID或者容器名字]:&#x2F;root</span><br><span class="line">COPY wordpress-4.6.zip &#x2F;root&#x2F;wordpress-4.6.zip</span><br></pre></td></tr></table></figure>
+
+
+
+<p>构建与启动镜像：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">build: cd a; docker build -t test .</span><br><span class="line"># cd进入a目录 test代表名字 .代表当前目录</span><br><span class="line">docker run -it test &#x2F;bin&#x2F;bash</span><br><span class="line"># -it交互方式启动 启动test镜像的容器 执行的指令</span><br></pre></td></tr></table></figure>
+
+<p>接下来可以用 ps -a 列出所有容器</p>
+<p>系统更新与安装环境</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RUN apt-get update -y</span><br><span class="line">RUN apt-get install -y apache2 php7.0 php7.0-mysql libapache2-mod-php7.0 iputils-ping net-tools unzip openssh-server sudo gcc</span><br></pre></td></tr></table></figure>
+
+
+
+<p>通过debconf-set-selections 提前设置mysql的root密码，这样mysql可以静默安装，因为在dockerfile下安装无交互，需要使用静默安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RUN echo &quot;mysql-server mysql-server&#x2F;root_password password 123456&quot; | debconf-set-selections</span><br><span class="line">RUN echo &quot;mysql-server mysql-server&#x2F;root_password_again password 123456&quot; | debconf-set-selections</span><br><span class="line">RUN apt-get install -y mysql-server</span><br></pre></td></tr></table></figure>
+
+
+
+<p>中途测试服务能否正常使用：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># service apache2 start | stop | status</span><br><span class="line"># service ssh start | stop | status</span><br></pre></td></tr></table></figure>
+
+
+
+<p>指定后面工作目录：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">WORKDIR &#x2F;root</span><br></pre></td></tr></table></figure>
+
+
+
+<p>安装wordpress，把刚刚的wordpress解压unzip（上面有安装unzip）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RUN unzip wordpress-4.6.zip</span><br><span class="line">#apache &#x2F;var&#x2F;www&#x2F;html</span><br><span class="line">RUN mv wordpress &#x2F;var&#x2F;www&#x2F;html</span><br></pre></td></tr></table></figure>
+
+
+
+<p>COPY入后面需要的html、php、txt文件等</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">COPY about.html &#x2F;var&#x2F;www&#x2F;html</span><br><span class="line">COPY robot.txt &#x2F;var&#x2F;www&#x2F;html</span><br><span class="line">COPY password.txt &#x2F;var&#x2F;www&#x2F;html</span><br><span class="line">COPY test.php &#x2F;var&#x2F;www&#x2F;html</span><br><span class="line"></span><br><span class="line">#docker cp test.php test:&#x2F;var&#x2F;www&#x2F;html #test.php放到test容器中</span><br><span class="line">#然后就可以在 127.0.0.1:9090&#x2F;test.php 访问到</span><br></pre></td></tr></table></figure>
+
+
+
+<p>添加用户</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RUN mkdir -p &#x2F;home&#x2F;lisi #创建目录</span><br><span class="line">RUN useradd -s &#x2F;bin&#x2F;bash -d &#x2F;home&#x2F;lisi lisi #创建用户</span><br><span class="line">RUN echo &quot;lisi:123456&quot; | chpasswd #无交互的修改密码</span><br><span class="line">RUN chown lisi:lisi &#x2F;home&#x2F;lisi #修改home目录的权限 root</span><br><span class="line">RUN echo &quot;here_is_flag_2&quot; &gt;&gt; &#x2F;home&#x2F;lisi&#x2F;flag2</span><br></pre></td></tr></table></figure>
+
+
+
+<p>添加sudo权限</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RUN chmod +w &#x2F;etc&#x2F;sudoers</span><br><span class="line">RUN echo &quot;lisi ALL&#x3D;(ALL:ALL) ALL&quot; &gt;&gt; &#x2F;etc&#x2F;sudoers</span><br><span class="line">RUN echo &quot;HERE_IS_FLAG_3&quot; &gt; &#x2F;root&#x2F;flag3</span><br></pre></td></tr></table></figure>
+
+
+
+<p>启动脚本：<br>docker 容器本身就是一个进程。如果进程里面有没有让进程持续运行的指令，那么进程就会退出。<br>可以利用死循环 比如ping 来让进程持续运行<br>eg:<br>ls 打印完当前路径的内容，然后就退出<br>而 ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 没有指定次数，那么他就持续运行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">COPY run.sh &#x2F;run.sh</span><br><span class="line">RUN chmod 755 &#x2F;run.sh #赋权</span><br><span class="line">CMD [&quot;&#x2F;run.sh&quot;]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash 内：</span><br><span class="line">&#x2F;etc&#x2F;init.d&#x2F;apache2 start</span><br><span class="line">service mysql start</span><br><span class="line"></span><br><span class="line">&#x2F;etc&#x2F;init.d&#x2F;ssh start -D #-d 后台持续运行</span><br></pre></td></tr></table></figure>
+
+
+
+<p>启动dockerFile命令:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#docker build -t test .  #会把dockerfile里的指令都运行一遍 建立镜像</span><br><span class="line">#docker images #查看镜像有没有被建立</span><br><span class="line"></span><br><span class="line">#docker run -d --rm --name test  -p 9090:80 -p 2222:22 test #跑容器</span><br><span class="line"># rm退出后直接删掉容器 test为容器的名字 容器内80映射到宿主机9090端口 后面的test代表镜像</span><br><span class="line"></span><br><span class="line">#docker ps -a #查看成功跑的容器</span><br><span class="line">#docker exec -it test &#x2F;bin&#x2F;bash # -it交互的方式 进入test容器 某地址</span><br><span class="line">#docker exec ：在运行的容器中执行命令</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果写错指令导致镜像装错了，可以删除多余的镜像，以免全是none</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rmi [镜像ID]</span><br><span class="line">#要先stop 正在使用该镜像的容器 比如 docker stop test ; docker rm test 删除</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="测试过程"><a href="#测试过程" class="headerlink" title="测试过程"></a>测试过程</h3><p>ssh连接： ssh <a href="mailto:lisi@127.0.0.1">lisi@127.0.0.1</a> -p 2222<br>查看是否有sudo权限： sudo -l<br>查看当前文件夹所有文件、查看某文件 ls cat<br>切换到超级管理员： sudo su</p>
 ]]></content>
       <categories>
         <category>技术</category>
