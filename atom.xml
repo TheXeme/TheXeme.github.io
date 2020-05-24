@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://thexeme.github.io/"/>
-  <updated>2020-05-24T05:16:29.294Z</updated>
+  <updated>2020-05-24T05:21:49.202Z</updated>
   <id>https://thexeme.github.io/</id>
   
   <author>
@@ -21,12 +21,12 @@
     <link href="https://thexeme.github.io/2020/05/24/%E9%9D%B6%E6%9C%BA%E6%90%AD%E5%BB%BA-dockerFile/"/>
     <id>https://thexeme.github.io/2020/05/24/%E9%9D%B6%E6%9C%BA%E6%90%AD%E5%BB%BA-dockerFile/</id>
     <published>2020-05-24T06:57:00.000Z</published>
-    <updated>2020-05-24T05:16:29.294Z</updated>
+    <updated>2020-05-24T05:21:49.202Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;靶机搭建：&lt;br&gt;基于docker的靶机环境建立&lt;/p&gt;
-&lt;p&gt;使用环境：&lt;br&gt;Docker version 19.03.1, build 74b1e89e8a&lt;br&gt;windows10&lt;/p&gt;
+&lt;p&gt;使用环境：&lt;br&gt;Docker version 19.03.1&lt;br&gt;windows10&lt;/p&gt;
     
     </summary>
     
