@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://thexeme.github.io/"/>
-  <updated>2020-05-24T05:21:49.202Z</updated>
+  <updated>2020-07-12T06:04:58.585Z</updated>
   <id>https://thexeme.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>七月工作笔记1</title>
+    <link href="https://thexeme.github.io/2020/07/12/7%E6%9C%88%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B01/"/>
+    <id>https://thexeme.github.io/2020/07/12/7%E6%9C%88%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B01/</id>
+    <published>2020-07-12T04:00:00.000Z</published>
+    <updated>2020-07-12T06:04:58.585Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;七月工作笔记1&quot;&gt;&lt;a href=&quot;#七月工作笔记1&quot; class=&quot;headerlink&quot; title=&quot;七月工作笔记1&quot;&gt;&lt;/a&gt;七月工作笔记1&lt;/h2&gt;&lt;p&gt;2020,07,06~2020,07,10一周工作笔记&lt;/p&gt;
+&lt;p&gt;【虎牙-AI工程平台开发组】&lt;/p&gt;
+&lt;p&gt;这周主要是接下了AI工程平台里的标注部分的后台，熟悉后台的代码，接一些小的需求&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://thexeme.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="虎牙AI工程平台开发组" scheme="https://thexeme.github.io/tags/%E8%99%8E%E7%89%99AI%E5%B7%A5%E7%A8%8B%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91%E7%BB%84/"/>
+    
+  </entry>
   
   <entry>
     <title>靶机搭建-dockerFile</title>
