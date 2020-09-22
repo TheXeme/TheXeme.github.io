@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://thexeme.github.io/"/>
-  <updated>2020-07-16T15:42:33.238Z</updated>
+  <updated>2020-09-22T02:32:07.310Z</updated>
   <id>https://thexeme.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>分布式部署下的唯一ID生成问题</title>
+    <link href="https://thexeme.github.io/2020/09/21/%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2%E4%B8%8B%E7%9A%84%E5%94%AF%E4%B8%80ID%E7%94%9F%E6%88%90%E9%97%AE%E9%A2%98/"/>
+    <id>https://thexeme.github.io/2020/09/21/%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2%E4%B8%8B%E7%9A%84%E5%94%AF%E4%B8%80ID%E7%94%9F%E6%88%90%E9%97%AE%E9%A2%98/</id>
+    <published>2020-09-21T10:00:00.000Z</published>
+    <updated>2020-09-22T02:32:07.310Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;分布式部署下的唯一ID生成问题&quot;&gt;&lt;a href=&quot;#分布式部署下的唯一ID生成问题&quot; class=&quot;headerlink&quot; title=&quot;分布式部署下的唯一ID生成问题&quot;&gt;&lt;/a&gt;分布式部署下的唯一ID生成问题&lt;/h2&gt;&lt;p&gt;近期发现在分布式情况下，生成一个系统内唯一的与其它数据绝对不重合的ID如果要自己去实现是一个比较复杂的问题，若要使用ID自增的方法，可能怕同时有两用户新建ID ， 第一个人从数据库里读取了最大号的ID+1，但还没来得及写入，后一个人又去取了最大号的ID+1，然后就出现了重合的情况；所以可能会想到使用redis分布式锁；但是新建ID可能会是一个比较高频的操作，频繁的建、解锁可能会造成性能开销&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://thexeme.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="后端开发" scheme="https://thexeme.github.io/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>实习-虎牙</title>
