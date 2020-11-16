@@ -65,74 +65,6 @@
     
     
     
-    <article id="post-分布式部署下的唯一ID生成问题" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/09/21/%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2%E4%B8%8B%E7%9A%84%E5%94%AF%E4%B8%80ID%E7%94%9F%E6%88%90%E9%97%AE%E9%A2%98/"
-    >分布式部署下的唯一ID生成问题</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/09/21/%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2%E4%B8%8B%E7%9A%84%E5%94%AF%E4%B8%80ID%E7%94%9F%E6%88%90%E9%97%AE%E9%A2%98/" class="article-date">
-  <time datetime="2020-09-21T10:00:00.000Z" itemprop="datePublished">2020-09-21</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h2 id="分布式部署下的唯一ID生成问题"><a href="#分布式部署下的唯一ID生成问题" class="headerlink" title="分布式部署下的唯一ID生成问题"></a>分布式部署下的唯一ID生成问题</h2><p>近期发现在分布式情况下，生成一个系统内唯一的与其它数据绝对不重合的ID如果要自己去实现是一个比较复杂的问题，若要使用ID自增的方法，可能怕同时有两用户新建ID ， 第一个人从数据库里读取了最大号的ID+1，但还没来得及写入，后一个人又去取了最大号的ID+1，然后就出现了重合的情况；所以可能会想到使用redis分布式锁；但是新建ID可能会是一个比较高频的操作，频繁的建、解锁可能会造成性能开销</p>
-      
-      <a class="article-more-link" href="/2020/09/21/%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2%E4%B8%8B%E7%9A%84%E5%94%AF%E4%B8%80ID%E7%94%9F%E6%88%90%E9%97%AE%E9%A2%98/">阅读更多...</a>
-      
-      
-      <!-- 打赏 -->
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://thexeme.github.io/2020/09/21/%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2%E4%B8%8B%E7%9A%84%E5%94%AF%E4%B8%80ID%E7%94%9F%E6%88%90%E9%97%AE%E9%A2%98/" data-id="ckfdcfnaf00002ctx1vt6dxgp"
-        class="article-share-link">分享</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">后端开发</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-  
-
-</article>
-    
     <article id="post-实习-虎牙" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -839,6 +771,88 @@
         class="article-share-link">分享</a>
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/" rel="tag">机器视觉</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+  
+
+</article>
+    
+    <article id="post-线性模型2" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/02/12/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B2/"
+    >线性模型2</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/02/12/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B2/" class="article-date">
+  <time datetime="2020-02-12T02:06:30.000Z" itemprop="datePublished">2020-02-12</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="类别"><a href="#类别" class="headerlink" title="类别"></a>类别</h2><h3 id="线性模型中的多分类学习"><a href="#线性模型中的多分类学习" class="headerlink" title="线性模型中的多分类学习"></a>线性模型中的多分类学习</h3><p>现实中常遇到多分类学习任务.有些二分类学习方法可直接推广到多分类，但在更多情形下，我们是基于一些基本策略，利用二分类学习器来解决多分类问题。</p>
+<p> 多分类学习的基本思路是”拆解法”，即将多分类任务拆为若干个二分类任务求解.具体来说，先对问题进行拆分，然后为拆出的每个二分类任务训练一个分类器;在测试时，对这些分类器的预测结果进行集成以获得最终的多分类结果.这里的关键是如何对多分类任务进行拆分，以及如何对多个分类器进行集成.最经典的拆分策略有三种. “一对一” (One vs. One，简称OvO) 、”一对其余” (One vs. Rest ，简称OvR)和”多对多” (Many vs. Many，简称MvM)。</p>
+<h4 id="OvO与OvR"><a href="#OvO与OvR" class="headerlink" title="OvO与OvR"></a>OvO与OvR</h4><p>OvO 将N 个类别两两配对，从而产生N(N 一1)/2 个二分类任务，最终结果可通过投票产生。OvR 则是每次将一个类的样例作为正例、所有其他类的样例作为反例来训练N个分类器.在测试时若仅有一个分类器预测为正类，则对应的类别标记作为最终分类结果。若有多个分类器预测为正类，则通常考虑各分类器的预测置信度，选择置信度最大的类别标记作为分类结果。下图为OvO与OvR的示意图：</p>
+<img src="/2020/02/12/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B2/OvO与OvR.png" style="zoom:80%;">
+
+
+
+<p>OvR只需训练N个分类器， 而OvO需训练N(N - 1)/2 个分类器， 因此， OvO的存储开销和测试间开销通常比OvR 更大. 但在训练时，OvR的每个分类器均使用全部训练样例，而OvO的每个分类器仅用到两个类的样例，因此，在类别很多时，OvO的训练时间开销通常比OvR更小. 预测性能在多数情形下两者差不多.</p>
+<h4 id="MvM"><a href="#MvM" class="headerlink" title="MvM"></a>MvM</h4><p>MvM 是每次将若干个类作为正类，若干个其他类作为反类. MvM的正、反类构造必须有特殊的设计，不能随意选取.最常用的MvM技术是”纠错输出码” (Error CorrectingOutput Codes，简称ECOC).它尽可能在解码过程中具有容错性. </p>
+<h5 id="Error-CorrectingOutput-Codes-ECOC"><a href="#Error-CorrectingOutput-Codes-ECOC" class="headerlink" title="Error CorrectingOutput Codes(ECOC)"></a>Error CorrectingOutput Codes(ECOC)</h5><p>ECOC 工作过程主要分为两步:<br>编码:对N个类别做M次划分， 每次划分将一部分类别划为正类，一部分划为反类，从而形成一个二分类训练集;这样一共产生M个训练集，可训练出M个分类器.<br>解码:M个分类器分别对测试样本进行预测，这些预测标记组成一个编码.将这个预测编码与每个类别各自的编码进行比较，返回其中距离最小的类别作为最终预测结果.</p>
+<img src="/2020/02/12/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B2/ECOC.png" style="zoom:80%;">
+
+<p>ECOC 编码示意图”+1” 、”-1” 分别表示学习器f将该类样本作为正、反例;三元码中”0” 表示f不使用该类样本<br>一般来说，对同一个学习任务， ECOC 编码越长，纠错能力越强.然而，编码越长，意味着所需训练的分类器越多，计算、存储开销都会增大;另外，对有限类别数，可能的组合数目是有限的。</p>
+<p>对OvR 、MvM 来说，由于对每个类进行了相同的处理，其拆解出的二分类任务中类别不平衡的影响会相互抵消，因此通常不需专门处理.</p>
+<h3 id="类别不平衡问题-class-imbalance"><a href="#类别不平衡问题-class-imbalance" class="headerlink" title="类别不平衡问题(class-imbalance)"></a>类别不平衡问题(class-imbalance)</h3><p>如果不同类别的训练样例数目稍有差别，通常影响不大，但若差别很大，则会对学习过程造成困扰.例如有998个反例，但正例只有2个，那么学习方法只需返回一个永远将新样本预测为反例的学习器，就能达到99.8%的精度;然而这样的学习器往往没有价值，因为它不能预测出任何正例.</p>
+      
+      <a class="article-more-link" href="/2020/02/12/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B2/">阅读更多...</a>
+      
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://thexeme.github.io/2020/02/12/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B2/" data-id="ck6itkzrx0000qktx8egsglby"
+        class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
 
     </footer>
 
